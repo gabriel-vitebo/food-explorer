@@ -1,15 +1,20 @@
-import { Container, Logo } from "./styles"
-
-import { AiOutlineMenu } from "react-icons/ai"
+import { Container } from "./styles"
 
 export function Header() {
   return (
     <Container>
-      <AiOutlineMenu size={24} />
-      <Logo>
-        <img src="/src/assets/logo.svg" alt="" />
+      <img src="/src/assets/menuIcon.svg" alt="botão para abrir o menu" />
+      <div className="logo">
+        <img src="/src/assets/logo.svg" alt="logo da food explorer" />
         <h1>food explorer</h1>
-      </Logo>
+      </div>
+      <div className="receipt">
+        <img
+          src="/src/assets/receipt.svg"
+          alt="ícone mostrando a quantidade de itens você adicionou"
+        />
+        <span>0</span>
+      </div>
     </Container>
   )
 }

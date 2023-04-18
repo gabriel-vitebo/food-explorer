@@ -23,7 +23,7 @@ export default {
       "linear-gradient(90deg, rgba(0, 10, 15, 0.272541) 0%, #000A0F 100%)",
     gradients200: "linear-gradient(180deg, #091E26 0%, #00131C 100%)",
 
-    tomato100: "750310",
+    tomato100: "#750310",
     tomato200: "#92000E",
     tomato300: "#AB222E",
     tomato400: "#AB4D55",

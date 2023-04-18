@@ -1,26 +1,50 @@
 import styled from "styled-components"
 
-export const Container = styled.header`
+export const Container = styled.div`
+  display: flex;
   grid-area: header;
-  height: 10.4rem;
   width: 100%;
-  display: flex;
+  height: 11.4rem;
+  padding: 0 2.8rem;
   justify-content: space-between;
-  padding: 0 3rem;
   align-items: center;
-`
-
-export const Logo = styled.div`
-  display: flex;
+  background-color: ${({ theme }) => theme.COLORS.dark700};
 
   > img {
     width: 2.4rem;
-    height: 2.4rem;
-    margin-right: 0.8rem;
+    height: 1.8rem;
   }
-  > h1 {
-    font-size: 2.1rem;
-    font-family: ${({ theme }) => theme.FONTS.Roboto};
-    font-weight: 700;
+
+  > .logo {
+    display: flex;
+    align-items: center;
+
+    h1 {
+      font-size: 2.1rem;
+      margin-left: 0.8rem;
+      font-weight: 700;
+      font-family: ${({ theme }) => theme.FONTS.Roboto};
+      color: ${({ theme }) => theme.COLORS.light100};
+    }
+  }
+
+  > .receipt {
+    img {
+      position: relative;
+    }
+
+    span {
+      background-color: ${({ theme }) => theme.COLORS.tomato100};
+      font-size: 1.4rem;
+      font-family: ${({ theme }) => theme.FONTS.Poppins};
+      font-weight: 500;
+      color: ${({ theme }) => theme.COLORS.light100};
+      text-align: center;
+      border-radius: 50%;
+      padding: 0.2rem 0.6rem;
+      position: absolute;
+      right: 1.8rem;
+      top: 3.5rem;
+    }
   }
 `
