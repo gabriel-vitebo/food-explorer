@@ -1,4 +1,5 @@
 import { Container } from "./styles"
+import { TfiReceipt } from "react-icons/tfi"
 import { Menu } from "../Menu"
 
 export function Header({ amount }) {
@@ -10,10 +11,7 @@ export function Header({ amount }) {
         <h1>food explorer</h1>
       </div>
       <div className="receipt">
-        <img
-          src="/src/assets/receipt.svg"
-          alt="ícone mostrando a quantidade de itens você adicionou"
-        />
+        <TfiReceipt size={26} />
         <span>{amount}</span>
       </div>
     </Container>

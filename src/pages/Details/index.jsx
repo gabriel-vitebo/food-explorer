@@ -7,7 +7,7 @@ export function Details() {
   return (
     <Container>
       <Header amount={3} />
-      <div>
+      <div className="buttonBack">
         <Button icon={RxCaretLeft} title={"voltar"} />
       </div>
     </Container>

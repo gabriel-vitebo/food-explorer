@@ -10,9 +10,8 @@ export const Container = styled.header`
   align-items: center;
   background-color: ${({ theme }) => theme.COLORS.dark700};
 
-  > img {
-    width: 2.4rem;
-    height: 1.8rem;
+  > svg {
+    color: ${({ theme }) => theme.COLORS.light100};
   }
 
   > .logo {
