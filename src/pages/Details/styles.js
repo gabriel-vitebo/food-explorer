@@ -8,4 +8,11 @@ export const Container = styled.div`
   grid-template-areas:
     "header"
     "content";
+
+  > .buttonBack {
+    text-align: center;
+    img {
+      width: 26.4rem;
+    }
+  }
 `
