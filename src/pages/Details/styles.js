@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: auto;
   display: grid;
   grid-template-rows: 10.4rem auto;
   grid-template-areas:
@@ -10,6 +10,9 @@ export const Container = styled.div`
     "content";
 
   > .buttonBack {
+    height: 3.4rem;
+  }
+  > .food-details {
     text-align: center;
     img {
       width: 26.4rem;
