@@ -1,10 +1,12 @@
 import { Container } from "./styles"
 import { RxCaretLeft } from "react-icons/rx"
+import { TfiReceipt } from "react-icons/tfi"
 import { Header } from "../../components/Header"
 import { Button } from "../../components/Button"
 import { FoodImage } from "../../components/FoodImage"
 import { Ingredients } from "../../components/Ingredients"
 import { Amount } from "../../components/Amount"
+import { ButtonBg } from "../../components/ButtonBg"
 
 export function Details() {
   return (
@@ -26,6 +28,7 @@ export function Details() {
         </div>
         <div className="quantity-and-finalize">
           <Amount number={"01"} />
+          <ButtonBg icon={TfiReceipt} title={"pedir"} price={"25,00"} />
         </div>
       </main>
     </Container>
