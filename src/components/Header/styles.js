@@ -18,7 +18,7 @@ export const Container = styled.header`
     display: flex;
     align-items: center;
 
-    h1 {
+    h2 {
       font-size: 2.1rem;
       margin-left: 0.8rem;
       font-weight: 700;

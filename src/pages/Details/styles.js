@@ -17,5 +17,19 @@ export const Container = styled.div`
     img {
       width: 26.4rem;
     }
+
+    h1 {
+      font-family: ${({ theme }) => theme.FONTS.Poppins};
+      font-weight: 500;
+      font-size: 2.7rem;
+      color: ${({ theme }) => theme.COLORS.light300};
+    }
+
+    p {
+      font-family: ${({ theme }) => theme.FONTS.Poppins};
+      font-weight: 400;
+      font-size: 1.6rem;
+      color: ${({ theme }) => theme.COLORS.light300};
+    }
   }
 `

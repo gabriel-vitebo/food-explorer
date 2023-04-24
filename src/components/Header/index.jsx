@@ -8,7 +8,7 @@ export function Header({ amount }) {
       <Menu />
       <div className="logo">
         <img src="/src/assets/logo.svg" alt="logo da food explorer" />
-        <h1>food explorer</h1>
+        <h2>food explorer</h2>
       </div>
       <div className="receipt">
         <TfiReceipt size={26} />
