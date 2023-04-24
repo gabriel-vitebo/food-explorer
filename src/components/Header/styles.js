@@ -17,6 +17,7 @@ export const Container = styled.header`
   > .logo {
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     h2 {
       font-size: 2.1rem;

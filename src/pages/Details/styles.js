@@ -9,27 +9,57 @@ export const Container = styled.div`
     "header"
     "content";
 
-  > .buttonBack {
-    height: 3.4rem;
+  > main {
+    grid-area: content;
+    overflow-y: auto;
+    padding: 1.6rem 0 3.3rem;
   }
-  > .food-details {
+`
+export const Content = styled.div`
+  overflow-y: auto;
+  max-width: 31.6rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  > .buttonBack {
+    align-self: start;
+    height: 3.4rem;
+    margin: 2rem 0 1.6rem;
+  }
+
+  > img {
+    width: 26.4rem;
+  }
+
+  > h1 {
+    font-family: ${({ theme }) => theme.FONTS.Poppins};
+    font-weight: 500;
+    font-size: 2.7rem;
+    color: ${({ theme }) => theme.COLORS.light300};
+    margin: 1.6rem 0 2.4rem;
+  }
+  > p {
+    font-family: ${({ theme }) => theme.FONTS.Poppins};
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: ${({ theme }) => theme.COLORS.light300};
+    margin-bottom: 2.4rem;
     text-align: center;
-    img {
-      width: 26.4rem;
-    }
+  }
 
-    h1 {
-      font-family: ${({ theme }) => theme.FONTS.Poppins};
-      font-weight: 500;
-      font-size: 2.7rem;
-      color: ${({ theme }) => theme.COLORS.light300};
-    }
+  > .ingredients {
+    margin-bottom: 4.8rem;
+    display: flex;
+    gap: 2.4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-    p {
-      font-family: ${({ theme }) => theme.FONTS.Poppins};
-      font-weight: 400;
-      font-size: 1.6rem;
-      color: ${({ theme }) => theme.COLORS.light300};
-    }
+  > .quantity-and-finalize {
+    display: flex;
+    gap: 1.6rem;
+    align-items: center;
   }
 `

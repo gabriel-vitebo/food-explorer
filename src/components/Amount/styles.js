@@ -7,4 +7,5 @@ export const Container = styled.div`
   font-weight: 700;
   font-size: 2.2rem;
   color: ${({ theme }) => theme.COLORS.light300};
+  cursor: pointer;
 `
