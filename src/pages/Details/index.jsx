@@ -7,6 +7,7 @@ import { FoodImage } from "../../components/FoodImage"
 import { Ingredients } from "../../components/Ingredients"
 import { Amount } from "../../components/Amount"
 import { ButtonBg } from "../../components/ButtonBg"
+import { Footer } from "../../components/Footer"
 
 export function Details() {
   return (
@@ -31,6 +32,7 @@ export function Details() {
           <ButtonBg icon={TfiReceipt} title={"pedir"} price={"25,00"} />
         </div>
       </main>
+      <Footer />
     </Container>
   )
 }
