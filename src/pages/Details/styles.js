@@ -31,6 +31,7 @@ export const Content = styled.div`
 
   > img {
     width: 26.4rem;
+    margin: 0 auto;
   }
 
   > h1 {

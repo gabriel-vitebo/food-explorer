@@ -7,6 +7,7 @@ export const Container = styled.div`
   width: 21rem;
   position: relative;
   padding: 2.4rem;
+  background-color: ${({ theme }) => theme.COLORS.dark300};
 
   > svg {
     width: 100%;

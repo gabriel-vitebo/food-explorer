@@ -3,7 +3,6 @@ import { RxCaretLeft } from "react-icons/rx"
 import { TfiReceipt } from "react-icons/tfi"
 import { Header } from "../../components/Header"
 import { Button } from "../../components/Button"
-import { FoodImage } from "../../components/FoodImage"
 import { Ingredients } from "../../components/Ingredients"
 import { Amount } from "../../components/Amount"
 import { ButtonBg } from "../../components/ButtonBg"
@@ -18,7 +17,7 @@ export function Details() {
           <div className="buttonBack">
             <Button icon={RxCaretLeft} title={"voltar"} />
           </div>
-          <FoodImage image={"/src/assets/Mask group-1.png"} />
+          <img src="/src/assets/Mask group-1.png" alt="" />
           <h1>Salada Ravanello</h1>
           <p>
             Rabanetes, folhas verdes e molho agridoce salpicados com gergelim.
