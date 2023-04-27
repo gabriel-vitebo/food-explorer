@@ -62,5 +62,9 @@ export const Content = styled.div`
     display: flex;
     gap: 1.6rem;
     align-items: center;
+
+    > button {
+      font-size: 1rem;
+    }
   }
 `
