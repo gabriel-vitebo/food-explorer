@@ -26,6 +26,7 @@ export const Form = styled.form`
       width: 4.2rem;
     }
   }
+
   > button {
     font-size: 1.4rem;
     color: ${({ theme }) => theme.COLORS.light100};
