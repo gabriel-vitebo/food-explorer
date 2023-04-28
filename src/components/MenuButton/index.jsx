@@ -1,7 +1,7 @@
 import { Container } from "./styles"
 import { AiOutlineMenu } from "react-icons/ai"
 
-export function Menu() {
+export function MenuButton() {
   return (
     <Container>
       <button className="menu">

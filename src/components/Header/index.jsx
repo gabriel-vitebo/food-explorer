@@ -1,12 +1,12 @@
 import { Container } from "./styles"
 import { TfiReceipt } from "react-icons/tfi"
-import { Menu } from "../Menu"
+import { MenuButton } from "../MenuButton"
 import { Logo } from "../Logo"
 
 export function Header({ amount }) {
   return (
     <Container>
-      <Menu />
+      <MenuButton />
       <Logo />
       <div className="receipt">
         <TfiReceipt size={26} />
