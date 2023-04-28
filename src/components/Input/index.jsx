@@ -3,9 +3,11 @@ import { Container } from "./styles"
 export function Input({ icon: Icon, title, ...rest }) {
   return (
     <Container>
-      {Icon && <Icon />}
       <label htmlFor="titleInput">{title}</label>
-      <input {...rest} />
+      <div className="input-area">
+        {Icon && <Icon size={24} />}
+        <input {...rest} />
+      </div>
     </Container>
   )
 }

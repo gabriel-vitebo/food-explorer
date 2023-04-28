@@ -15,7 +15,7 @@ export function Details() {
       <main>
         <Content>
           <div className="buttonBack">
-            <Button icon={RxCaretLeft} title={"voltar"} />
+            <Button icon={RxCaretLeft} title={"voltar"} size={32} />
           </div>
           <img src="/src/assets/Mask group-1.png" alt="" />
           <h1>Salada Ravanello</h1>

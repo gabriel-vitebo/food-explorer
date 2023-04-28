@@ -14,6 +14,11 @@ export const Container = styled.div`
       justify-content: flex-start;
       margin: 0 2.8rem;
       gap: 1.6rem;
+      font-family: ${({ theme }) => theme.FONTS.Roboto};
+      line-height: 2.4rem;
+      font-weight: 400;
+      font-size: 2.1rem;
+      color: ${({ theme }) => theme.COLORS.light100};
     }
   }
 `

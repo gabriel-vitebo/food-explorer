@@ -21,30 +21,38 @@ export const Container = styled.div`
     margin-bottom: 0.8rem;
   }
 
-  > input {
-    height: 4.8rem;
+  > .input-area {
     width: 100%;
-    padding: 1.6rem 1.4rem;
-    color: ${({ theme }) => theme.COLORS.light400};
+    display: flex;
+    align-items: center;
     background-color: ${({ theme }) => theme.COLORS.dark900};
-    border-radius: 0.8rem;
-    border: none;
-    font-family: ${({ theme }) => theme.FONTS.Roboto};
-    font-weight: 400;
-    font-size: 1.6rem;
-    line-height: 1.6rem;
     color: ${({ theme }) => theme.COLORS.light500};
+    border-radius: 0.8rem;
 
-    &::placeholder {
+    > svg {
+      margin-left: 1.4rem;
+    }
+
+    > input {
+      height: 4.8rem;
+      width: 100%;
+      padding: 1.6rem 1.4rem;
+      color: ${({ theme }) => theme.COLORS.light400};
+      background-color: transparent;
+      border: none;
       font-family: ${({ theme }) => theme.FONTS.Roboto};
       font-weight: 400;
       font-size: 1.6rem;
       line-height: 1.6rem;
       color: ${({ theme }) => theme.COLORS.light500};
-    }
 
-    > svg {
-      margin: 0 1.4rem;
+      &::placeholder {
+        font-family: ${({ theme }) => theme.FONTS.Roboto};
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        color: ${({ theme }) => theme.COLORS.light500};
+      }
     }
   }
 `
