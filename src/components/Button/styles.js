@@ -9,8 +9,6 @@ export const Container = styled.button`
   background: none;
   border: none;
 
-  width: 100%;
-  align-items: center;
   &:disabled {
     opacity: 0.5;
   }
