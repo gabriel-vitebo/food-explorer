@@ -14,6 +14,9 @@ export const Container = styled.div`
 export const Form = styled.form`
   max-width: 36.4rem;
   margin: 0.5rem auto 5.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
 
   > header {
     display: flex;

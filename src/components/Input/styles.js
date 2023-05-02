@@ -14,7 +14,7 @@ export const Container = styled.div`
     font-weight: 400;
     font-size: 1.6rem;
     line-height: 1.6rem;
-    color: ${({ theme }) => theme.COLORS.light500};
+    color: ${({ theme }) => theme.COLORS.light400};
     width: 100%;
     display: flex;
     justify-self: flex-start;
@@ -25,8 +25,8 @@ export const Container = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
-    background-color: ${({ theme }) => theme.COLORS.dark900};
-    color: ${({ theme }) => theme.COLORS.light500};
+    background-color: ${({ theme }) => theme.COLORS.dark800};
+    color: ${({ theme }) => theme.COLORS.light400};
     border-radius: 0.8rem;
 
     > svg {
