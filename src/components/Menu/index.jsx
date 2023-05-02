@@ -1,8 +1,8 @@
 import { Container, Content } from "./styles"
 import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai"
-import { Button } from "../../components/Button"
-import { Input } from "../../components/Input"
-import { Footer } from "../../components/Footer"
+import { Button } from "../Button"
+import { Input } from "../Input"
+import { Footer } from "../Footer"
 
 export function Menu() {
   return (

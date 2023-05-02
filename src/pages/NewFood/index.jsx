@@ -2,7 +2,6 @@ import { Container, Form } from "./styles"
 
 import { Header } from "../../components/Header"
 import { Button } from "../../components/Button"
-
 import { RxCaretLeft } from "react-icons/rx"
 
 export function NewFood() {
