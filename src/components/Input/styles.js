@@ -7,7 +7,6 @@ export const Container = styled.div`
   align-items: center;
 
   color: ${({ theme }) => theme.COLORS.light400};
-  margin-bottom: 3.2rem;
 
   > label {
     font-family: ${({ theme }) => theme.FONTS.Roboto};

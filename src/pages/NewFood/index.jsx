@@ -4,6 +4,7 @@ import { Header } from "../../components/Header"
 import { Button } from "../../components/Button"
 import { InputImage } from "../../components/InputImage"
 import { Input } from "../../components/Input"
+import { DropList } from "../../components/DropList"
 
 import { RxCaretLeft } from "react-icons/rx"
 import { BsUpload } from "react-icons/bs"
@@ -20,6 +21,7 @@ export function NewFood() {
           </header>
           <InputImage icon={BsUpload} title={"Selecione imagem"} />
           <Input title={"Nome"} label={"Ex.: Salada Ceasar"} />
+          <DropList title={"Categoria"} />
         </Form>
       </main>
     </Container>

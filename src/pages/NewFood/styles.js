@@ -36,7 +36,7 @@ export const Form = styled.form`
       line-height: 4.4rem;
       color: ${({ theme }) => theme.COLORS.light300};
 
-      margin: 2.4rem 0;
+      margin: 2.4rem 0 0 0;
     }
   }
 `
