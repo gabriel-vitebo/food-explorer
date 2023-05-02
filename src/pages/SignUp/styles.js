@@ -13,11 +13,12 @@ export const Form = styled.form`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  gap: 3.2rem;
 
   text-align: center;
 
   > div:nth-child(1) {
-    margin-bottom: 7.3rem;
+    margin-bottom: 4.1rem;
     h2 {
       font-size: 3.2rem;
     }
@@ -30,6 +31,5 @@ export const Form = styled.form`
   > button {
     font-size: 1.4rem;
     color: ${({ theme }) => theme.COLORS.light100};
-    margin-bottom: 3.2rem;
   }
 `
