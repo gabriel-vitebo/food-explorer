@@ -7,6 +7,7 @@ import { InputImage } from "../../components/InputImage"
 import { Input } from "../../components/Input"
 import { DropList } from "../../components/DropList"
 import { NewIngredient } from "../../components/NewIngredient"
+import { TextArea } from "../../components/TextArea"
 import { ButtonBg } from "../../components/ButtonBg"
 
 import { RxCaretLeft } from "react-icons/rx"
@@ -39,6 +40,13 @@ export function NewFood() {
           </Section>
           <Section title={"preço"}>
             <Input placeholder={"R$ 00,00"} />
+          </Section>
+          <Section title={"Descrição"}>
+            <TextArea
+              placeholder={
+                "Fale brevemente sobre o prato, seus ingredientes e composição"
+              }
+            />
           </Section>
           <ButtonBg title={"Salvar prato"} />
         </Form>
