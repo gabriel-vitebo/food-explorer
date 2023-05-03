@@ -39,4 +39,16 @@ export const Form = styled.form`
       margin: 2.4rem 0 0 0;
     }
   }
+
+  > section {
+    h2 {
+      font-family: ${({ theme }) => theme.FONTS.Roboto};
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 1.6rem;
+      color: ${({ theme }) => theme.COLORS.light400};
+
+      margin-bottom: 1.6rem;
+    }
+  }
 `

@@ -1,22 +1,14 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
+  width: 100%;
   height: 4.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-  margin-bottom: 2.4rem;
 
   > input[type="file"] {
     display: none;
-  }
-
-  > span {
-    font-family: ${({ theme }) => theme.FONTS.Roboto};
-    font-weight: 400;
-    font-size: 1.6rem;
-    line-height: 1.6rem;
-    color: ${({ theme }) => theme.COLORS.light400};
   }
 
   > label {

@@ -1,7 +1,7 @@
 import { Container } from "./styles"
 
 import { Header } from "../../components/Header"
-import { Category } from "../../components/Category"
+import { Section } from "../../components/Section"
 import { Card } from "../../components/Card"
 import { Footer } from "../../components/Footer"
 export function Home() {
@@ -11,7 +11,7 @@ export function Home() {
       <div className="brand">
         <img src="/src/assets/brend.png" alt="" />
       </div>
-      <Category title={"Refeições"}>
+      <Section title={"Refeições"}>
         <Card
           name={"Salada Ravanello"}
           price={"49,97"}
@@ -32,8 +32,8 @@ export function Home() {
           price={"79,97"}
           image={"/src/assets/Mask group-2.png"}
         />
-      </Category>
-      <Category title={"Pratos principais"}>
+      </Section>
+      <Section title={"Pratos principais"}>
         <Card
           name={"Prugna Pie"}
           price={"79,97"}
@@ -54,8 +54,8 @@ export function Home() {
           price={"32,97"}
           image={"/src/assets/Mask group-6.png"}
         />
-      </Category>
-      <Category title={"Bebidas"}>
+      </Section>
+      <Section title={"Bebidas"}>
         <Card
           name={"Prugna Pie"}
           price={"79,97"}
@@ -76,7 +76,7 @@ export function Home() {
           price={"32,97"}
           image={"/src/assets/Mask group-6.png"}
         />
-      </Category>
+      </Section>
       <Footer />
     </Container>
   )

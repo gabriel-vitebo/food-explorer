@@ -5,14 +5,7 @@ export const Container = styled.fieldset`
   flex-direction: column;
   gap: 1.6rem;
   border: none;
-
-  > span {
-    font-family: ${({ theme }) => theme.FONTS.Roboto};
-    font-weight: 400;
-    font-size: 1.6rem;
-    line-height: 1.6rem;
-    color: ${({ theme }) => theme.COLORS.light400};
-  }
+  width: 100%;
 
   > select {
     list-style: none;
