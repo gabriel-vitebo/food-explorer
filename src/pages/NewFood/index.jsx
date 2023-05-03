@@ -6,6 +6,7 @@ import { Section } from "../../components/Section"
 import { InputImage } from "../../components/InputImage"
 import { Input } from "../../components/Input"
 import { DropList } from "../../components/DropList"
+import { NewIngredient } from "../../components/NewIngredient"
 import { ButtonBg } from "../../components/ButtonBg"
 
 import { RxCaretLeft } from "react-icons/rx"
@@ -29,6 +30,12 @@ export function NewFood() {
           </Section>
           <Section title={"Categoria"}>
             <DropList />
+          </Section>
+          <Section title={"Ingredientes"}>
+            <div className="ingredients-tag">
+              <NewIngredient value="Pão Naan" />
+              <NewIngredient isNew placeholder="adicionar" />
+            </div>
           </Section>
           <Section title={"preço"}>
             <Input placeholder={"R$ 00,00"} />

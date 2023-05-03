@@ -50,5 +50,17 @@ export const Form = styled.form`
 
       margin-bottom: 1.6rem;
     }
+
+    .ingredients-tag {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      gap: 1.6rem;
+
+      background-color: ${({ theme }) => theme.COLORS.dark800};
+      border-radius: 0.8rem;
+      height: 100%;
+      padding: 0.4rem 0.8rem;
+    }
   }
 `
