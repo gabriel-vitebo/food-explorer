@@ -14,7 +14,7 @@ import { Footer } from "../../components/Footer"
 import { RxCaretLeft } from "react-icons/rx"
 import { BsUpload } from "react-icons/bs"
 
-export function NewFood() {
+export function EditFood() {
   return (
     <Container>
       <Header amount={0} />
@@ -22,13 +22,16 @@ export function NewFood() {
         <Form>
           <header>
             <Button size={22} icon={RxCaretLeft} title={"voltar"} />
-            <h1>Novo prato</h1>
+            <h1>Editar prato</h1>
           </header>
           <Section title={"Imagem do prato"}>
-            <InputImage icon={BsUpload} title={"Selecione imagem"} />
+            <InputImage
+              icon={BsUpload}
+              title={"Selecione imagem para alterá-la"}
+            />
           </Section>
           <Section title={"Nome"}>
-            <Input title={"Nome"} placeholder={"Ex.: Salada Ceasar"} />
+            <Input title={"Nome"} placeholder={"Salada Ceasar"} />
           </Section>
           <Section title={"Categoria"}>
             <DropList />
@@ -40,16 +43,19 @@ export function NewFood() {
             </div>
           </Section>
           <Section title={"preço"}>
-            <Input placeholder={"R$ 00,00"} />
+            <Input placeholder={"R$ 40,00"} />
           </Section>
           <Section title={"Descrição"}>
             <TextArea
               placeholder={
-                "Fale brevemente sobre o prato, seus ingredientes e composição"
+                "A Salada César é uma opção refrescante para o verão."
               }
             />
           </Section>
-          <ButtonBg title={"Salvar prato"} />
+          <div className="buttons">
+            <ButtonBg title={"Excluir prato"} />
+            <ButtonBg title={"Salvar alteração"} />
+          </div>
         </Form>
       </main>
       <Footer />
