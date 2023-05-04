@@ -25,7 +25,7 @@ export function SignUp() {
           placeholder={"No mínimo 6 caracteres"}
         />
         <ButtonBg title={"Criar conta"} />
-        <Button title={"Já tenho uma conta"} />
+        <Button link="/" title={"Já tenho uma conta"} />
       </Form>
     </Container>
   )

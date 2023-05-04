@@ -23,7 +23,7 @@ export const Form = styled.form`
     flex-direction: column;
     justify-content: flex-start;
 
-    button {
+    a {
       font-size: 1.6rem;
       line-height: 2.3rem;
       justify-content: flex-start;

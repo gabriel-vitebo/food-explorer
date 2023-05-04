@@ -20,7 +20,7 @@ export function SignIn() {
           placeholder={"No mínimo 6 caracteres"}
         />
         <ButtonBg title={"Entrar"} />
-        <Button title={"Criar uma conta"} />
+        <Button link={"/register"} title={"Criar uma conta"} />
       </Form>
     </Container>
   )
