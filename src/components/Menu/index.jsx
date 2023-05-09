@@ -5,11 +5,11 @@ import { Button } from "../Button"
 
 import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai"
 
-export function Menu() {
+export function Menu({ ...rest }) {
   return (
     <Container>
       <div className="close-menu">
-        <Button icon={AiOutlineClose} title={"Menu"} />
+        <Button icon={AiOutlineClose} title={"Menu"} {...rest} />
       </div>
       <Input
         icon={AiOutlineSearch}

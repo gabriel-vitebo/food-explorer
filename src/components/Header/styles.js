@@ -48,7 +48,4 @@ export const Container = styled.header`
       top: 3.5rem;
     }
   }
-
-  > .menu {
-  }
 `
