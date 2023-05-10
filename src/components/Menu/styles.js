@@ -9,6 +9,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.dark700};
   padding: 2.8rem;
   width: 100%;
+
   > .close-menu {
     height: 11.4rem;
     display: flex;
