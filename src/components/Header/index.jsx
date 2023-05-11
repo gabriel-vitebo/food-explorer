@@ -8,7 +8,6 @@ import { Menu } from "../Menu"
 
 export function Header({ amount }) {
   const [openMenu, setOpenMenu] = useState(false)
-
   return (
     <Container>
       <MenuButton

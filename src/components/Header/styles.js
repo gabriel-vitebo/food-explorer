@@ -11,12 +11,8 @@ export const Container = styled.header`
   background-color: ${({ theme }) => theme.COLORS.dark700};
   position: relative;
 
-  > .inactive {
+  .inative {
     visibility: hidden;
-  }
-
-  .active {
-    visibility: visible;
   }
 
   > svg {

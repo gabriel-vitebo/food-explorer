@@ -8,9 +8,17 @@ import { Button } from "../Button"
 import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai"
 
 export function Menu({ ...rest }) {
+  const [disable, setDisable] = useState(false)
+  console.log(disable)
   return (
-    <Container>
-      <div className="close-menu">
+    <Container className={disable && "inative"}>
+      <div
+        className="close-menu"
+        onClick={() => {
+          setDisable(!disable)
+          console.log(disable)
+        }}
+      >
         <Button icon={AiOutlineClose} title={"Menu"} {...rest} />
       </div>
       <Input
