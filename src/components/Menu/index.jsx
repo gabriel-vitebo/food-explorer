@@ -1,26 +1,12 @@
-import { useState } from "react"
-
 import { Container } from "./styles"
 
 import { Input } from "../Input"
-import { Button } from "../Button"
 
-import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai"
+import { AiOutlineSearch } from "react-icons/ai"
 
-export function Menu({ ...rest }) {
-  const [disable, setDisable] = useState(false)
-  console.log(disable)
+export function Menu() {
   return (
-    <Container className={disable && "inative"}>
-      <div
-        className="close-menu"
-        onClick={() => {
-          setDisable(!disable)
-          console.log(disable)
-        }}
-      >
-        <Button icon={AiOutlineClose} title={"Menu"} {...rest} />
-      </div>
+    <Container>
       <Input
         icon={AiOutlineSearch}
         placeholder={"Busque por pratos ou ingredientes"}
