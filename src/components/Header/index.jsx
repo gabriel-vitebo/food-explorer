@@ -1,9 +1,8 @@
 import { useState } from "react"
-import { AiOutlineClose } from "react-icons/ai"
 
 import { Container } from "./styles"
 import { TfiReceipt } from "react-icons/tfi"
-import { MenuButton } from "../MenuButton"
+import { OpenMenu } from "../OpenMenu"
 import { CloseMenu } from "../CloseMenu"
 import { Logo } from "../Logo"
 import { Menu } from "../Menu"
@@ -20,7 +19,7 @@ export function Header({ amount }) {
           }}
         />
       ) : (
-        <MenuButton
+        <OpenMenu
           onClick={() => {
             setOpenMenu(!openMenu)
           }}
