@@ -1,8 +1,8 @@
 import { Container } from "./styles"
 
-export function Logo({ isAdm }) {
+export function Logo({ isAdm, ...rest }) {
   return (
-    <Container>
+    <Container {...rest}>
       <img src="/src/assets/logo.svg" alt="logo da food explorer" />
       <h2>food explorer</h2>
       {isAdm && <span>admin</span>}
