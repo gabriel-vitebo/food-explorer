@@ -7,7 +7,7 @@ import { CloseMenu } from "../CloseMenu"
 import { Logo } from "../Logo"
 import { Menu } from "../Menu"
 
-export function Header({ amount }) {
+export function Header({ amount, isAdm = false }) {
   const [openMenu, setOpenMenu] = useState(false)
   return (
     <Container>

@@ -13,16 +13,20 @@ export const Container = styled.div`
   ul {
     list-style: none;
 
-    font-size: 2.4rem;
-    font-family: ${({ theme }) => theme.FONTS.Poppins};
-    font-weight: 400;
-    color: ${({ theme }) => theme.COLORS.light300};
-
     margin-top: 4.5rem;
 
     li {
       border-bottom: 1px solid ${({ theme }) => theme.COLORS.dark1000};
       padding: 0 0 1rem 0;
+    }
+
+    button {
+      border: none;
+      background: none;
+      font-size: 2.4rem;
+      font-family: ${({ theme }) => theme.FONTS.Poppins};
+      font-weight: 400;
+      color: ${({ theme }) => theme.COLORS.light300};
     }
   }
 `

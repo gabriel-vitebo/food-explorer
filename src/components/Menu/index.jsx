@@ -1,10 +1,12 @@
 import { Container } from "./styles"
+import { useAuth } from "../../hooks/auth"
 
 import { Input } from "../Input"
 
 import { AiOutlineSearch } from "react-icons/ai"
 
-export function Menu() {
+export function Menu({ isAdm = false }) {
+  const { signOut } = useAuth()
   return (
     <Container>
       <Input
@@ -12,8 +14,14 @@ export function Menu() {
         placeholder={"Busque por pratos ou ingredientes"}
       />
       <ul>
-        <li>Sair</li>
-        <li>Novo prato</li>
+        <li onClick={signOut}>
+          <button>Sair</button>
+        </li>
+        {isAdm && (
+          <li>
+            <button>Novo prato</button>
+          </li>
+        )}
       </ul>
     </Container>
   )
