@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 import { Container, Form } from "./styles"
 
 import { Header } from "../../components/Header"
@@ -15,6 +17,25 @@ import { RxCaretLeft } from "react-icons/rx"
 import { BsUpload } from "react-icons/bs"
 
 export function NewFood() {
+  const [foodName, setFoodName] = useState("")
+
+  const [ingredients, setIngredients] = useState([])
+  const [newIngredient, setNewIngredient] = useState("")
+
+  const [price, setPrice] = useState(0)
+  const [description, setDescription] = useState("")
+
+  function handleAddIngredient() {
+    setIngredients((prevState) => [...prevState, newIngredient])
+    setNewIngredient("")
+  }
+
+  function handleRemoveIngredient(deleted) {
+    setIngredients((prevState) =>
+      prevState.filter((ingredient) => ingredient !== deleted)
+    )
+  }
+
   return (
     <Container>
       <Header amount={0} />
@@ -28,25 +49,47 @@ export function NewFood() {
             <InputImage icon={BsUpload} title={"Selecione imagem"} />
           </Section>
           <Section title={"Nome"}>
-            <Input title={"Nome"} placeholder={"Ex.: Salada Ceasar"} />
+            <Input
+              title={"Nome"}
+              placeholder={"Ex.: Salada Ceasar"}
+              onChange={(e) => setFoodName(e.target.value)}
+            />
           </Section>
           <Section title={"Categoria"}>
             <DropList />
           </Section>
           <Section title={"Ingredientes"}>
             <div className="ingredients-tag">
-              <NewIngredient value="Pão Naan" />
-              <NewIngredient isNew placeholder="adicionar" />
+              {ingredients.map((ingredient, index) => (
+                <NewIngredient
+                  key={String(index)}
+                  value={ingredient}
+                  onClick={() => {
+                    handleRemoveIngredient(ingredient)
+                  }}
+                />
+              ))}
+              <NewIngredient
+                isNew
+                placeholder="adicionar"
+                onChange={(e) => setNewIngredient(e.target.value)}
+                value={newIngredient}
+                onClick={handleAddIngredient}
+              />
             </div>
           </Section>
           <Section title={"preço"}>
-            <Input placeholder={"R$ 00,00"} />
+            <Input
+              placeholder={"R$ 00,00"}
+              onChange={(e) => setPrice(e.target.value)}
+            />
           </Section>
           <Section title={"Descrição"}>
             <TextArea
               placeholder={
                 "Fale brevemente sobre o prato, seus ingredientes e composição"
               }
+              onChange={(e) => setDescription(e.target.value)}
             />
           </Section>
           <ButtonBg title={"Salvar prato"} />
