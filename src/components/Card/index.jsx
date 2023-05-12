@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import { Container } from "./styles"
 import { AiOutlineHeart } from "react-icons/ai"
 import { RxCaretRight } from "react-icons/rx"
@@ -6,9 +7,19 @@ import { Amount } from "../../components/Amount"
 import { ButtonBg } from "../../components/ButtonBg"
 
 export function Card({ isAdm, name, price, image }) {
+  const navigate = useNavigate()
+
+  function editFood() {
+    navigate("editfood/:id")
+  }
+
   return (
     <Container>
-      {isAdm ? <BsPencil size={25} /> : <AiOutlineHeart size={25} />}
+      {isAdm ? (
+        <BsPencil size={25} onClick={editFood} />
+      ) : (
+        <AiOutlineHeart size={25} />
+      )}
 
       <img src={image} alt="foto do prato" />
       <div className="foodname">
@@ -16,8 +27,8 @@ export function Card({ isAdm, name, price, image }) {
         <RxCaretRight size={20} />
       </div>
       <span>R${price}</span>
-      <Amount number={1} />
-      <ButtonBg title={"incluir"} />
+      <Amount number={1} isAdm={isAdm} />
+      <ButtonBg title={"incluir"} isAdm={isAdm} />
     </Container>
   )
 }
