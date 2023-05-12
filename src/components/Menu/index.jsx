@@ -5,7 +5,7 @@ import { Input } from "../Input"
 
 import { AiOutlineSearch } from "react-icons/ai"
 
-export function Menu({ isAdm = false }) {
+export function Menu({ isAdm }) {
   const { signOut } = useAuth()
   return (
     <Container>

@@ -32,24 +32,25 @@ export const Container = styled.header`
       color: ${({ theme }) => theme.COLORS.light100};
     }
   }
+`
 
-  > .receipt {
-    img {
-      position: relative;
-    }
+export const Receipt = styled.div`
+  visibility: ${({ isAdm }) => isAdm && "hidden"};
+  img {
+    position: relative;
+  }
 
-    span {
-      background-color: ${({ theme }) => theme.COLORS.tomato100};
-      font-size: 1.4rem;
-      font-family: ${({ theme }) => theme.FONTS.Poppins};
-      font-weight: 500;
-      color: ${({ theme }) => theme.COLORS.light100};
-      text-align: center;
-      border-radius: 50%;
-      padding: 0.2rem 0.6rem;
-      position: absolute;
-      right: 1.8rem;
-      top: 3.5rem;
-    }
+  span {
+    background-color: ${({ theme }) => theme.COLORS.tomato100};
+    font-size: 1.4rem;
+    font-family: ${({ theme }) => theme.FONTS.Poppins};
+    font-weight: 500;
+    color: ${({ theme }) => theme.COLORS.light100};
+    text-align: center;
+    border-radius: 50%;
+    padding: 0.2rem 0.6rem;
+    position: absolute;
+    right: 1.8rem;
+    top: 3.5rem;
   }
 `

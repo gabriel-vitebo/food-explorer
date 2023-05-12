@@ -1,14 +1,19 @@
 import { useState } from "react"
 
-import { Container } from "./styles"
+import { useAuth } from "../../hooks/auth"
+
+import { Container, Receipt } from "./styles"
 import { TfiReceipt } from "react-icons/tfi"
 import { OpenMenu } from "../OpenMenu"
 import { CloseMenu } from "../CloseMenu"
 import { Logo } from "../Logo"
 import { Menu } from "../Menu"
 
-export function Header({ amount, isAdm = false }) {
+export function Header({ amount }) {
+  const { user } = useAuth()
   const [openMenu, setOpenMenu] = useState(false)
+  const [isAdm, setIsAdm] = useState(user.isAdm)
+
   return (
     <Container>
       {openMenu ? (
@@ -25,16 +30,16 @@ export function Header({ amount, isAdm = false }) {
           }}
         />
       )}
-      {!openMenu && <Logo />}
+      {!openMenu && <Logo isAdm={isAdm} />}
 
       {!openMenu && (
-        <div className="receipt">
+        <Receipt isAdm={isAdm}>
           <TfiReceipt size={26} />
           <span>{amount}</span>
-        </div>
+        </Receipt>
       )}
 
-      {openMenu && <Menu />}
+      {openMenu && <Menu isAdm={isAdm} />}
     </Container>
   )
 }
