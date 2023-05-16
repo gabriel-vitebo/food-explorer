@@ -25,6 +25,12 @@ export function NewFood() {
   const [price, setPrice] = useState(0)
   const [description, setDescription] = useState("")
 
+  const [categories, setCategories] = useState([
+    "sobremesa",
+    "bebidas",
+    "refeição",
+  ])
+
   function handleAddIngredient() {
     setIngredients((prevState) => [...prevState, newIngredient])
     setNewIngredient("")
@@ -56,7 +62,11 @@ export function NewFood() {
             />
           </Section>
           <Section title={"Categoria"}>
-            <DropList />
+            <DropList>
+              {categories.map((category) => (
+                <option className="option">{category}</option>
+              ))}
+            </DropList>
           </Section>
           <Section title={"Ingredientes"}>
             <div className="ingredients-tag">
