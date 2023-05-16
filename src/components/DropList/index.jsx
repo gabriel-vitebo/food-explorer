@@ -1,12 +1,10 @@
 import { Container } from "./styles"
 
-export function DropList({ icon: Icon }) {
+export function DropList({ children }) {
   return (
     <Container>
       <select name="select" id="select">
-        <option className="option">refeição</option>
-        <option className="option">sobremesa</option>
-        <option className="option">bebida</option>
+        {children}
       </select>
     </Container>
   )
