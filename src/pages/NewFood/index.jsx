@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { api } from "../../services/api"
 
 import { Container, Form } from "./styles"
 
@@ -25,11 +26,8 @@ export function NewFood() {
   const [price, setPrice] = useState(0)
   const [description, setDescription] = useState("")
 
-  const [categories, setCategories] = useState([
-    "sobremesa",
-    "bebidas",
-    "refeição",
-  ])
+  const [categories, setCategories] = useState([])
+  const [selectedCategoryId, setSelectedCategoryId] = useState("")
 
   function handleAddIngredient() {
     setIngredients((prevState) => [...prevState, newIngredient])
@@ -41,6 +39,28 @@ export function NewFood() {
       prevState.filter((ingredient) => ingredient !== deleted)
     )
   }
+
+  async function handleNewFood() {
+    const params = {
+      name: foodName,
+      description: description,
+      price: price,
+      ingredients: ingredients,
+      categoryId: selectedCategoryId,
+    }
+    console.log(params)
+    await api.post("/foods", params)
+  }
+
+  useEffect(() => {
+    async function categoryName() {
+      const response = (await api.get("/categories/all")).data
+      const firstCategory = response[0]
+      setCategories(response)
+      setSelectedCategoryId(firstCategory)
+    }
+    categoryName()
+  }, [])
 
   return (
     <Container>
@@ -62,9 +82,15 @@ export function NewFood() {
             />
           </Section>
           <Section title={"Categoria"}>
-            <DropList>
+            <DropList onChange={(e) => setSelectedCategoryId(e.target.value)}>
               {categories.map((category) => (
-                <option className="option">{category}</option>
+                <option
+                  key={category.id}
+                  value={category.id}
+                  className="option"
+                >
+                  {category.name}
+                </option>
               ))}
             </DropList>
           </Section>
@@ -102,7 +128,7 @@ export function NewFood() {
               onChange={(e) => setDescription(e.target.value)}
             />
           </Section>
-          <ButtonBg title={"Salvar prato"} />
+          <ButtonBg title={"Salvar prato"} onClick={handleNewFood} />
         </Form>
       </main>
       <Footer />
