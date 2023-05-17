@@ -29,6 +29,15 @@ export function NewFood() {
   const [categories, setCategories] = useState([])
   const [selectedCategoryId, setSelectedCategoryId] = useState("")
 
+  const [image, setImage] = useState(null)
+  const [imageFile, setImageFile] = useState(null)
+
+  function handleChangeImage(e) {
+    const file = e.target.files[0]
+    setImageFile(file)
+    console.log(file)
+  }
+
   function handleAddIngredient() {
     setIngredients((prevState) => [...prevState, newIngredient])
     setNewIngredient("")
@@ -72,7 +81,11 @@ export function NewFood() {
             <h1>Novo prato</h1>
           </header>
           <Section title={"Imagem do prato"}>
-            <InputImage icon={BsUpload} title={"Selecione imagem"} />
+            <InputImage
+              icon={BsUpload}
+              title={"Selecione imagem"}
+              onChange={handleChangeImage}
+            />
           </Section>
           <Section title={"Nome"}>
             <Input
