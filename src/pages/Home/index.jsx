@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { api } from "../../services/api"
 import { Container } from "./styles"
 import { useAuth } from "../../hooks/auth"
 
@@ -9,6 +10,17 @@ import { Footer } from "../../components/Footer"
 export function Home() {
   const { user } = useAuth()
   const [isAdm, setIsAdm] = useState(user.isAdm)
+  const [ foods, setFoods ] = useState([])
+
+  useEffect(() => {
+    async function showFood(){
+      const response = await api.get("/foods?name&ingredients")
+      setFoods(response.data)
+      console.log(foods)
+    }
+    
+    showFood()
+  }, [])
 
   return (
     <Container>
@@ -17,30 +29,16 @@ export function Home() {
         <img src="/src/assets/brend.png" alt="" />
       </div>
       <Section title={"Refeições"}>
-        <Card
-          name={"Salada Ravanello"}
-          price={"49,97"}
-          image={"/src/assets/Mask group-1.png"}
-          isAdm={isAdm}
-        />
-        <Card
-          name={"Spaguetti Gambe"}
-          price={"79,97"}
-          image={"/src/assets/Mask group-2.png"}
-          isAdm={isAdm}
-        />
-        <Card
-          name={"Spaguetti Gambe"}
-          price={"79,97"}
-          image={"/src/assets/Mask group-2.png"}
-          isAdm={isAdm}
-        />
-        <Card
-          name={"Spaguetti Gambe"}
-          price={"79,97"}
-          image={"/src/assets/Mask group-2.png"}
-          isAdm={isAdm}
-        />
+        {
+          foods.map(food => (
+            <Card
+              name={food.name}
+              price={food.price}
+              image={food.image}
+              isAdm={isAdm}
+            />
+          ))
+        }    
       </Section>
 
       <Footer />
