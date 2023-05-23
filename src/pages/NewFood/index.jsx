@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { api } from "../../services/api"
+import { useNavigate } from "react-router-dom"
 
 import { Container, Form } from "./styles"
 
@@ -31,6 +32,8 @@ export function NewFood() {
 
   const [ imageFile, setImageFile ] = useState(null)
 
+  const navigate = useNavigate()
+
   function setImage(event){
     const file = event.target.files[0]
     setImageFile(file)
@@ -49,6 +52,16 @@ export function NewFood() {
   }
 
   async function handleNewFood() {
+    if(!foodName || !price || !description || !imageFile ) {
+      return alert("Preencha todos os campos!")
+    }
+
+
+    if(newIngredient){
+      return alert("O ingrediente digitado não foi inserido, clique no ícone '+'para adicionar ")
+    }
+
+
     const formData = new FormData()
     formData.append("image", imageFile)
     formData.append("name", foodName)
@@ -59,6 +72,9 @@ export function NewFood() {
 
 
     await api.post("/foods", formData)
+
+    alert("Prato criado com sucesso!")
+    navigate('/')
   }
 
   useEffect(() => {
@@ -67,7 +83,6 @@ export function NewFood() {
       const firstCategory = response[0]
       setCategories(response)
       setSelectedCategoryId(firstCategory)
-      console.log({firstCategory})
     }
     categoryName()
   }, [])
