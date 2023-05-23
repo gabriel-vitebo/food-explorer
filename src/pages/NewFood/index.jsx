@@ -29,14 +29,13 @@ export function NewFood() {
   const [categories, setCategories] = useState([])
   const [selectedCategoryId, setSelectedCategoryId] = useState("")
 
-  const [image, setImage] = useState(null)
-  const [imageFile, setImageFile] = useState(null)
+  const [ imageFile, setImageFile ] = useState(null)
 
-  function handleChangeImage(e) {
-    const file = e.target.files[0]
+  function setImage(event){
+    const file = event.target.files[0]
     setImageFile(file)
-    console.log(file)
   }
+
 
   function handleAddIngredient() {
     setIngredients((prevState) => [...prevState, newIngredient])
@@ -50,15 +49,16 @@ export function NewFood() {
   }
 
   async function handleNewFood() {
-    const params = {
-      name: foodName,
-      description: description,
-      price: price,
-      ingredients: ingredients,
-      categoryId: selectedCategoryId,
-    }
-    console.log(params)
-    await api.post("/foods", params)
+    const formData = new FormData()
+    formData.append("image", imageFile)
+    formData.append("name", foodName)
+    formData.append("description", description)
+    formData.append("price", price)
+    formData.append("ingredients", JSON.stringify(ingredients) )
+    formData.append("categoryId", selectedCategoryId.id)
+
+
+    await api.post("/foods", formData)
   }
 
   useEffect(() => {
@@ -67,6 +67,7 @@ export function NewFood() {
       const firstCategory = response[0]
       setCategories(response)
       setSelectedCategoryId(firstCategory)
+      console.log({firstCategory})
     }
     categoryName()
   }, [])
@@ -84,7 +85,7 @@ export function NewFood() {
             <InputImage
               icon={BsUpload}
               title={"Selecione imagem"}
-              onChange={handleChangeImage}
+              onChange={setImage}
             />
           </Section>
           <Section title={"Nome"}>
