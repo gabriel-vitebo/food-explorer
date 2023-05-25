@@ -7,18 +7,25 @@ import { Header } from "../../components/Header"
 import { Section } from "../../components/Section"
 import { Card } from "../../components/Card"
 import { Footer } from "../../components/Footer"
+
+
 export function Home() {
   const { user } = useAuth()
   const [isAdm, setIsAdm] = useState(user.isAdm)
   const [ foods, setFoods ] = useState([])
+  const [ image, setImage ] = useState(null)
 
+  
   useEffect(() => {
     async function showFood(){
-      const response = await api.get("/foods?name&ingredients")
+      const response = await api.get("/foods?name")
+      const fileName = response.data.find(image => image)
+      const imageUrl = `${api.defaults.baseURL}/files/${fileName.image}`
+
       setFoods(response.data)
-      console.log(foods)
+      setImage(imageUrl)
+
     }
-    
     showFood()
   }, [])
 
@@ -32,9 +39,10 @@ export function Home() {
         {
           foods.map(food => (
             <Card
+              key={food.name}
               name={food.name}
               price={food.price}
-              image={food.image}
+              image={image}
               isAdm={isAdm}
             />
           ))

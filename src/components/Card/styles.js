@@ -20,7 +20,8 @@ export const Container = styled.div`
 
   > img {
     width: 8.8rem;
-    height: auto;
+    height: 8.8rem;
+    object-fit: cover;
     border-radius: 50%;
     margin-bottom: 1.2rem;
   }
