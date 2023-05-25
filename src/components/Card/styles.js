@@ -8,6 +8,7 @@ export const Container = styled.div`
   position: relative;
   padding: 2.4rem;
   background-color: ${({ theme }) => theme.COLORS.dark300};
+  text-align: center;
 
   > svg {
     width: 100%;
@@ -30,6 +31,8 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     h3 {
+      height: 2.4rem;
+      line-height: 2.4rem;
       font-family: ${({ theme }) => theme.FONTS.Poppins};
       font-weight: 500;
       font-size: 1.4rem;

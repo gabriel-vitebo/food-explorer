@@ -12,18 +12,15 @@ import { Footer } from "../../components/Footer"
 export function Home() {
   const { user } = useAuth()
   const [isAdm, setIsAdm] = useState(user.isAdm)
-  const [ foods, setFoods ] = useState([])
-  const [ image, setImage ] = useState(null)
+  const [ categories, setCategories ] = useState([])
+  
 
   
   useEffect(() => {
     async function showFood(){
-      const response = await api.get("/foods?name")
-      const fileName = response.data.find(image => image)
-      const imageUrl = `${api.defaults.baseURL}/files/${fileName.image}`
-
-      setFoods(response.data)
-      setImage(imageUrl)
+      const response = await api.get("/categories?name")
+    
+      setCategories(response.data)
 
     }
     showFood()
@@ -35,19 +32,20 @@ export function Home() {
       <div className="brand">
         <img src="/src/assets/brend.png" alt="" />
       </div>
-      <Section title={"Refeições"}>
         {
-          foods.map(food => (
-            <Card
-              key={food.name}
-              name={food.name}
-              price={food.price}
-              image={image}
-              isAdm={isAdm}
-            />
+          categories.map(category => ( 
+            <Section title={category.name}>
+              {category.foods.map((food) => (
+                <Card
+                key={food.name}
+                name={food.name}
+                price={food.price}
+                image={food.image}
+                isAdm={isAdm}
+              />))}
+            </Section>
           ))
         }    
-      </Section>
 
       <Footer />
     </Container>
