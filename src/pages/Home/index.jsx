@@ -19,6 +19,8 @@ export function Home() {
   useEffect(() => {
     async function showFood(){
       const response = await api.get("/categories?name")
+
+      console.log({categories})
     
       setCategories(response.data)
 
@@ -34,10 +36,9 @@ export function Home() {
       </div>
         {
           categories.map(category => ( 
-            <Section title={category.name}>
+            <Section title={category.name} >
               {category.foods.map((food) => (
                 <Card
-                key={food.name}
                 name={food.name}
                 price={food.price}
                 image={food.image}

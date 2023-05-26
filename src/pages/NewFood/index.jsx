@@ -68,7 +68,9 @@ export function NewFood() {
     formData.append("description", description)
     formData.append("price", price)
     formData.append("ingredients", JSON.stringify(ingredients) )
-    formData.append("categoryId", selectedCategoryId.id)
+    formData.append("categoryId", selectedCategoryId)
+
+    
 
 
     await api.post("/foods", formData)
