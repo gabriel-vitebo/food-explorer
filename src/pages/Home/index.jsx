@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import { Container } from "./styles";
 import { useAuth } from "../../hooks/auth";
@@ -11,7 +12,13 @@ import { Footer } from "../../components/Footer";
 export function Home() {
   const { user } = useAuth();
   const [categories, setCategories] = useState([]);
+
   const isAdm = user.isAdm;
+  const navigate = useNavigate();
+
+  function handleDetails(id) {
+    navigate(`/details/${id}`);
+  }
 
   useEffect(() => {
     async function showFood() {
@@ -37,9 +44,11 @@ export function Home() {
         <Section title={category.name}>
           {category.foods.map((food) => (
             <Card
+              key={food.image}
               name={food.name}
               price={food.price}
               image={food.image}
+              openDetails={() => handleDetails(food.foodId)}
               isAdm={isAdm}
             />
           ))}
