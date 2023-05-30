@@ -1,93 +1,89 @@
-import { useState, useEffect } from "react"
-import { api } from "../../services/api"
-import { useNavigate } from "react-router-dom"
+import { useState, useEffect } from "react";
+import { api } from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
-import { Container, Form } from "./styles"
+import { Container, Form } from "./styles";
 
-import { Header } from "../../components/Header"
-import { Button } from "../../components/Button"
-import { Section } from "../../components/Section"
-import { InputImage } from "../../components/InputImage"
-import { Input } from "../../components/Input"
-import { DropList } from "../../components/DropList"
-import { NewIngredient } from "../../components/NewIngredient"
-import { TextArea } from "../../components/TextArea"
-import { ButtonBg } from "../../components/ButtonBg"
-import { Footer } from "../../components/Footer"
+import { Header } from "../../components/Header";
+import { Button } from "../../components/Button";
+import { Section } from "../../components/Section";
+import { InputImage } from "../../components/InputImage";
+import { Input } from "../../components/Input";
+import { DropList } from "../../components/DropList";
+import { NewIngredient } from "../../components/NewIngredient";
+import { TextArea } from "../../components/TextArea";
+import { ButtonBg } from "../../components/ButtonBg";
+import { Footer } from "../../components/Footer";
 
-import { RxCaretLeft } from "react-icons/rx"
-import { BsUpload } from "react-icons/bs"
+import { RxCaretLeft } from "react-icons/rx";
+import { BsUpload } from "react-icons/bs";
 
 export function NewFood() {
-  const [foodName, setFoodName] = useState("")
+  const [foodName, setFoodName] = useState("");
 
-  const [ingredients, setIngredients] = useState([])
-  const [newIngredient, setNewIngredient] = useState("")
+  const [ingredients, setIngredients] = useState([]);
+  const [newIngredient, setNewIngredient] = useState("");
 
-  const [price, setPrice] = useState(0)
-  const [description, setDescription] = useState("")
+  const [price, setPrice] = useState(0);
+  const [description, setDescription] = useState("");
 
-  const [categories, setCategories] = useState([])
-  const [selectedCategoryId, setSelectedCategoryId] = useState("")
+  const [categories, setCategories] = useState([]);
+  const [selectedCategoryId, setSelectedCategoryId] = useState("");
 
-  const [ imageFile, setImageFile ] = useState(null)
+  const [imageFile, setImageFile] = useState(null);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  function setImage(event){
-    const file = event.target.files[0]
-    setImageFile(file)
+  function setImage(event) {
+    const file = event.target.files[0];
+    setImageFile(file);
   }
 
-
   function handleAddIngredient() {
-    setIngredients((prevState) => [...prevState, newIngredient])
-    setNewIngredient("")
+    setIngredients((prevState) => [...prevState, newIngredient]);
+    setNewIngredient("");
   }
 
   function handleRemoveIngredient(deleted) {
     setIngredients((prevState) =>
       prevState.filter((ingredient) => ingredient !== deleted)
-    )
+    );
   }
 
   async function handleNewFood() {
-    if(!foodName || !price || !description || !imageFile ) {
-      return alert("Preencha todos os campos!")
+    if (!foodName || !price || !description || !imageFile) {
+      return alert("Preencha todos os campos!");
     }
 
-
-    if(newIngredient){
-      return alert("O ingrediente digitado não foi inserido, clique no ícone '+'para adicionar ")
+    if (newIngredient) {
+      return alert(
+        "O ingrediente digitado não foi inserido, clique no ícone '+'para adicionar "
+      );
     }
 
+    const formData = new FormData();
+    formData.append("image", imageFile);
+    formData.append("name", foodName);
+    formData.append("description", description);
+    formData.append("price", price);
+    formData.append("ingredients", JSON.stringify(ingredients));
+    formData.append("categoryId", selectedCategoryId.id);
 
-    const formData = new FormData()
-    formData.append("image", imageFile)
-    formData.append("name", foodName)
-    formData.append("description", description)
-    formData.append("price", price)
-    formData.append("ingredients", JSON.stringify(ingredients) )
-    formData.append("categoryId", selectedCategoryId)
+    await api.post("/foods", formData);
 
-    
-
-
-    await api.post("/foods", formData)
-
-    alert("Prato criado com sucesso!")
-    navigate('/')
+    alert("Prato criado com sucesso!");
+    navigate("/");
   }
 
   useEffect(() => {
     async function categoryName() {
-      const response = (await api.get("/categories/all")).data
-      const firstCategory = response[0]
-      setCategories(response)
-      setSelectedCategoryId(firstCategory)
+      const response = (await api.get("/categories/all")).data;
+      const firstCategory = response[0];
+      setCategories(response);
+      setSelectedCategoryId(firstCategory);
     }
-    categoryName()
-  }, [])
+    categoryName();
+  }, []);
 
   return (
     <Container>
@@ -132,7 +128,7 @@ export function NewFood() {
                   key={String(index)}
                   value={ingredient}
                   onClick={() => {
-                    handleRemoveIngredient(ingredient)
+                    handleRemoveIngredient(ingredient);
                   }}
                 />
               ))}
@@ -164,5 +160,5 @@ export function NewFood() {
       </main>
       <Footer />
     </Container>
-  )
+  );
 }
