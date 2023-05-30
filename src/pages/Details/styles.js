@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
@@ -14,7 +14,7 @@ export const Container = styled.div`
     overflow-y: auto;
     padding: 1.6rem 0 3.3rem;
   }
-`
+`;
 export const Content = styled.div`
   overflow-y: auto;
   max-width: 31.6rem;
@@ -30,8 +30,11 @@ export const Content = styled.div`
   }
 
   > img {
-    width: 26.4rem;
+    width: 25rem;
+    height: 25rem;
     margin: 0 auto;
+    object-fit: cover;
+    border-radius: 50%;
   }
 
   > h1 {
@@ -47,7 +50,7 @@ export const Content = styled.div`
     font-size: 1.6rem;
     color: ${({ theme }) => theme.COLORS.light300};
     margin-bottom: 2.4rem;
-    text-align: center;
+    text-align: justify;
   }
 
   > .ingredients {
@@ -67,4 +70,4 @@ export const Content = styled.div`
       font-size: 1rem;
     }
   }
-`
+`;
