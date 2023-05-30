@@ -29,8 +29,6 @@ export function Details() {
       const response = await api.get(`/foods/${params.id}`);
       setFoodData(response.data.food);
       setIngredients(response.data.ingredients);
-
-      console.log({ ingredients });
     }
 
     fetchFood();

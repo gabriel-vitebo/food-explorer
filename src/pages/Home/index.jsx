@@ -41,10 +41,10 @@ export function Home() {
         <img src="/src/assets/brend.png" alt="" />
       </div>
       {categories.map((category) => (
-        <Section title={category.name}>
+        <Section title={category.name} key={category.categoryId}>
           {category.foods.map((food) => (
             <Card
-              key={food.image}
+              key={food.foodId}
               name={food.name}
               price={food.price}
               image={food.image}
