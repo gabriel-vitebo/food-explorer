@@ -1,3 +1,8 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { api } from "../../services/api";
+
 import { Container, Form } from "./styles";
 
 import { Header } from "../../components/Header";
@@ -15,13 +20,35 @@ import { RxCaretLeft } from "react-icons/rx";
 import { BsUpload } from "react-icons/bs";
 
 export function EditFood() {
+  const [food, setFood] = useState({});
+
+  const params = useParams();
+  const navigate = useNavigate();
+
+  function backToHome() {
+    navigate("/");
+  }
+
+  useEffect(() => {
+    async function fetchFood() {
+      const response = await api.get(`/foods/${params.id}`);
+      setFood(response.data.food);
+    }
+    fetchFood();
+  }, []);
+
   return (
     <Container>
       <Header amount={0} />
       <main>
         <Form>
           <header>
-            <Button size={22} icon={RxCaretLeft} title={"voltar"} />
+            <Button
+              size={22}
+              icon={RxCaretLeft}
+              title={"voltar"}
+              onClick={backToHome}
+            />
             <h1>Editar prato</h1>
           </header>
           <Section title={"Imagem do prato"}>
@@ -31,7 +58,12 @@ export function EditFood() {
             />
           </Section>
           <Section title={"Nome"}>
-            <Input title={"Nome"} placeholder={"Salada Ceasar"} />
+            <Input
+              title={"Nome"}
+              placeholder={"Salada Ceasar"}
+              value={food.name || ""}
+              onChange={(e) => setFood({ ...food, name: e.target.value })}
+            />
           </Section>
           <Section title={"Categoria"}>
             <DropList />
@@ -43,12 +75,20 @@ export function EditFood() {
             </div>
           </Section>
           <Section title={"preço"}>
-            <Input placeholder={"R$ 40,00"} />
+            <Input
+              placeholder={"R$ 40,00"}
+              value={food.price || ""}
+              onChange={(e) => setFood({ ...food, price: e.target.value })}
+            />
           </Section>
           <Section title={"Descrição"}>
             <TextArea
               placeholder={
                 "A Salada César é uma opção refrescante para o verão."
+              }
+              value={food.description || ""}
+              onChange={(e) =>
+                setFood({ ...food, description: e.target.value })
               }
             />
           </Section>
