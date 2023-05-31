@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { Container } from "./styles";
 import { AiOutlineHeart } from "react-icons/ai";
 import { RxCaretRight } from "react-icons/rx";
@@ -6,13 +5,7 @@ import { BsPencil } from "react-icons/bs";
 import { Amount } from "../../components/Amount";
 import { ButtonBg } from "../../components/ButtonBg";
 
-export function Card({ isAdm, name, price, image, openDetails }) {
-  const navigate = useNavigate();
-
-  function editFood() {
-    navigate("editfood/:id");
-  }
-
+export function Card({ isAdm, name, price, image, openDetails, editFood }) {
   return (
     <Container>
       {isAdm ? (

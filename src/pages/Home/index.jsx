@@ -20,6 +20,10 @@ export function Home() {
     navigate(`/details/${id}`);
   }
 
+  function handleEditFood(id) {
+    navigate(`/editfood/${id}`);
+  }
+
   useEffect(() => {
     async function showFood() {
       const response = await api.get("/categories?name");
@@ -48,6 +52,7 @@ export function Home() {
               name={food.name}
               price={food.price}
               image={food.image}
+              editFood={() => handleEditFood(food.foodId)}
               openDetails={() => handleDetails(food.foodId)}
               isAdm={isAdm}
             />

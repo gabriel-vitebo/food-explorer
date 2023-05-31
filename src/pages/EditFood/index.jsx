@@ -1,18 +1,18 @@
-import { Container, Form } from "./styles"
+import { Container, Form } from "./styles";
 
-import { Header } from "../../components/Header"
-import { Button } from "../../components/Button"
-import { Section } from "../../components/Section"
-import { InputImage } from "../../components/InputImage"
-import { Input } from "../../components/Input"
-import { DropList } from "../../components/DropList"
-import { NewIngredient } from "../../components/NewIngredient"
-import { TextArea } from "../../components/TextArea"
-import { ButtonBg } from "../../components/ButtonBg"
-import { Footer } from "../../components/Footer"
+import { Header } from "../../components/Header";
+import { Button } from "../../components/Button";
+import { Section } from "../../components/Section";
+import { InputImage } from "../../components/InputImage";
+import { Input } from "../../components/Input";
+import { DropList } from "../../components/DropList";
+import { NewIngredient } from "../../components/NewIngredient";
+import { TextArea } from "../../components/TextArea";
+import { ButtonBg } from "../../components/ButtonBg";
+import { Footer } from "../../components/Footer";
 
-import { RxCaretLeft } from "react-icons/rx"
-import { BsUpload } from "react-icons/bs"
+import { RxCaretLeft } from "react-icons/rx";
+import { BsUpload } from "react-icons/bs";
 
 export function EditFood() {
   return (
@@ -60,5 +60,5 @@ export function EditFood() {
       </main>
       <Footer />
     </Container>
-  )
+  );
 }
