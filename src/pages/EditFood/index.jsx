@@ -21,12 +21,21 @@ import { BsUpload } from "react-icons/bs";
 
 export function EditFood() {
   const [food, setFood] = useState({});
+  console.log({ food });
 
   const params = useParams();
   const navigate = useNavigate();
 
   function backToHome() {
     navigate("/");
+  }
+
+  async function handleUpdate() {
+    await api.put(`/foods/${params.id}`, {
+      name: food.name,
+      price: food.price,
+      description: food.description,
+    });
   }
 
   useEffect(() => {
@@ -94,7 +103,7 @@ export function EditFood() {
           </Section>
           <div className="buttons">
             <ButtonBg title={"Excluir prato"} />
-            <ButtonBg title={"Salvar alteração"} />
+            <ButtonBg title={"Salvar alteração"} onClick={handleUpdate} />
           </div>
         </Form>
       </main>

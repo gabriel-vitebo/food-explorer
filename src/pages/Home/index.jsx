@@ -33,7 +33,6 @@ export function Home() {
       );
 
       setCategories(uniqueCategories);
-      console.log({ categories });
     }
     showFood();
   }, []);
