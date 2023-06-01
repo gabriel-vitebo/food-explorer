@@ -21,6 +21,8 @@ import { BsUpload } from "react-icons/bs";
 
 export function EditFood() {
   const [food, setFood] = useState({});
+  const [image, setImage] = useState(null);
+
   console.log({ food });
 
   const params = useParams();
@@ -30,12 +32,22 @@ export function EditFood() {
     navigate("/");
   }
 
+  function handleImageChange(event) {
+    const file = event.target.files[0];
+    setImage(file);
+  }
+
   async function handleUpdate() {
-    await api.put(`/foods/${params.id}`, {
-      name: food.name,
-      price: food.price,
-      description: food.description,
-    });
+    const formData = new FormData();
+    formData.append("name", food.name);
+    formData.append("price", food.price);
+    formData.append("description", food.description);
+    formData.append("image", image);
+
+    await api.put(`/foods/${params.id}`, formData);
+
+    alert("Prato atualizado com sucesso!");
+    navigate("/");
   }
 
   useEffect(() => {
@@ -64,6 +76,7 @@ export function EditFood() {
             <InputImage
               icon={BsUpload}
               title={"Selecione imagem para alterá-la"}
+              onChange={handleImageChange}
             />
           </Section>
           <Section title={"Nome"}>
