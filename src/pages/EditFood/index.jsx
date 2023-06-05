@@ -21,9 +21,12 @@ import { BsUpload } from "react-icons/bs";
 
 export function EditFood() {
   const [food, setFood] = useState({});
+  const [ingredients, setIngredients] = useState([]);
+  const [newIngredient, setNewIngredient] = useState("");
+
   const [image, setImage] = useState(null);
 
-  console.log({ food });
+  console.log({ food, ingredients, newIngredient });
 
   const params = useParams();
   const navigate = useNavigate();
@@ -35,6 +38,17 @@ export function EditFood() {
   function handleImageChange(event) {
     const file = event.target.files[0];
     setImage(file);
+  }
+
+  function handleAddIngredient() {
+    setIngredients((prevState) => [...prevState, newIngredient]);
+    setNewIngredient("");
+  }
+
+  function handleRemoveIngredient(deleted) {
+    setIngredients((prevState) =>
+      prevState.filter((ingredient) => ingredient !== deleted)
+    );
   }
 
   async function handleUpdate() {
@@ -54,6 +68,7 @@ export function EditFood() {
     async function fetchFood() {
       const response = await api.get(`/foods/${params.id}`);
       setFood(response.data.food);
+      setIngredients(response.data.ingredients);
     }
     fetchFood();
   }, []);
@@ -92,8 +107,24 @@ export function EditFood() {
           </Section>
           <Section title={"Ingredientes"}>
             <div className="ingredients-tag">
-              <NewIngredient value="Pão Naan" />
-              <NewIngredient isNew placeholder="adicionar" />
+              {ingredients.map((ingredient, index) => {
+                return (
+                  <NewIngredient
+                    value={ingredient}
+                    key={String(index)}
+                    onClick={() => {
+                      handleRemoveIngredient(ingredient);
+                    }}
+                  />
+                );
+              })}
+              <NewIngredient
+                isNew
+                placeholder="adicionar"
+                onChange={(e) => setNewIngredient(e.target.value)}
+                value={newIngredient}
+                onClick={handleAddIngredient}
+              />
             </div>
           </Section>
           <Section title={"preço"}>
