@@ -23,10 +23,12 @@ export function EditFood() {
   const [food, setFood] = useState({});
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState({});
 
   const [image, setImage] = useState(null);
 
-  console.log({ food, ingredients, newIngredient });
+  console.log({ categories, selectedCategory, food });
 
   const params = useParams();
   const navigate = useNavigate();
@@ -57,6 +59,10 @@ export function EditFood() {
     formData.append("price", food.price);
     formData.append("description", food.description);
     formData.append("image", image);
+    formData.append("categoryId", selectedCategory.id);
+
+    console.log({ food });
+    console.log({ selectedCategory });
 
     await api.put(`/foods/${params.id}`, formData);
 
@@ -65,12 +71,39 @@ export function EditFood() {
   }
 
   useEffect(() => {
+    let foodTmp = null;
+
     async function fetchFood() {
       const response = await api.get(`/foods/${params.id}`);
+      console.log({ food: response });
       setFood(response.data.food);
       setIngredients(response.data.ingredients);
+      foodTmp = response.data.food;
     }
-    fetchFood();
+
+    async function categoryName() {
+      const response = (await api.get("/categories/all")).data;
+      const firstCategory = response.find((category) => {
+        console.log({ category, foodTmp });
+        return category.id === foodTmp.categoryId;
+      });
+      const sortedCategories = [
+        firstCategory,
+        ...response.filter((category) => {
+          return category.id != firstCategory.id;
+        }),
+      ];
+      setCategories(sortedCategories);
+      setSelectedCategory(firstCategory);
+      console.log({ selectedCategory });
+    }
+
+    async function execute() {
+      await fetchFood();
+      await categoryName();
+    }
+
+    execute();
   }, []);
 
   return (
@@ -103,7 +136,19 @@ export function EditFood() {
             />
           </Section>
           <Section title={"Categoria"}>
-            <DropList />
+            <DropList
+              onChange={(e) => setSelectedCategory(JSON.parse(e.target.value))}
+            >
+              {categories.map((category) => (
+                <option
+                  key={category.id}
+                  value={JSON.stringify(category)}
+                  className="option"
+                >
+                  {category.name}
+                </option>
+              ))}
+            </DropList>
           </Section>
           <Section title={"Ingredientes"}>
             <div className="ingredients-tag">
