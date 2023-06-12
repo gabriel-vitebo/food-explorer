@@ -28,8 +28,6 @@ export function EditFood() {
 
   const [image, setImage] = useState(null);
 
-  console.log({ categories, selectedCategory, food });
-
   const params = useParams();
   const navigate = useNavigate();
 
@@ -61,9 +59,6 @@ export function EditFood() {
     formData.append("image", image);
     formData.append("categoryId", selectedCategory.id);
 
-    console.log({ food });
-    console.log({ selectedCategory });
-
     await api.put(`/foods/${params.id}`, formData);
 
     alert("Prato atualizado com sucesso!");
@@ -84,7 +79,6 @@ export function EditFood() {
     async function categoryName() {
       const response = (await api.get("/categories/all")).data;
       const firstCategory = response.find((category) => {
-        console.log({ category, foodTmp });
         return category.id === foodTmp.categoryId;
       });
       const sortedCategories = [
@@ -95,7 +89,6 @@ export function EditFood() {
       ];
       setCategories(sortedCategories);
       setSelectedCategory(firstCategory);
-      console.log({ selectedCategory });
     }
 
     async function execute() {
