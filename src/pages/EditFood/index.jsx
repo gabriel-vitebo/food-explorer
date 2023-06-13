@@ -58,6 +58,7 @@ export function EditFood() {
     formData.append("description", food.description);
     formData.append("image", image);
     formData.append("categoryId", selectedCategory.id);
+    formData.append("ingredients", JSON.stringify(ingredients));
 
     await api.put(`/foods/${params.id}`, formData);
 
@@ -70,7 +71,6 @@ export function EditFood() {
 
     async function fetchFood() {
       const response = await api.get(`/foods/${params.id}`);
-      console.log({ food: response });
       setFood(response.data.food);
       setIngredients(response.data.ingredients);
       foodTmp = response.data.food;
