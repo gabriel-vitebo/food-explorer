@@ -12,7 +12,7 @@ import { Footer } from "../../components/Footer";
 export function Home() {
   const { user } = useAuth();
   const [categories, setCategories] = useState([]);
-  const [quantityToInclude, setQuantityToInclude] = useState(0);
+  const [quantitiesToInclude, setQuantitiesToInclude] = useState({});
   const [quantityInCart, setQuantityInCart] = useState(0);
 
   const isAdm = user.isAdm;
@@ -26,21 +26,31 @@ export function Home() {
     navigate(`/editfood/${id}`);
   }
 
-  function addOneMore() {
-    const result = quantityToInclude + 1;
-    setQuantityToInclude(result);
+  function addOneMore(id) {
+    setQuantitiesToInclude((prevQuantities) => ({
+      ...prevQuantities,
+      [id]: (prevQuantities[id] || 0) + 1,
+    }));
   }
 
-  function removeOneMore() {
-    const result = quantityToInclude - 1;
-    if (quantityToInclude === 0) {
-      return setQuantityToInclude(0);
+  function removeOneMore(id) {
+    if (!quantitiesToInclude[id]) {
+      return;
     }
-    setQuantityToInclude(result);
+    setQuantitiesToInclude((prevQuantities) => ({
+      ...prevQuantities,
+      [id]: prevQuantities[id] - 1,
+    }));
   }
 
-  function addToCart() {
-    setQuantityInCart(quantityToInclude);
+  function addToCart(id) {
+    setQuantityInCart(
+      (prevQuantity) => prevQuantity + (quantitiesToInclude[id] || 0)
+    );
+    setQuantitiesToInclude((prevQuantities) => ({
+      ...prevQuantities,
+      [id]: 0,
+    }));
   }
 
   useEffect(() => {
@@ -70,10 +80,10 @@ export function Home() {
               name={food.name}
               price={food.price}
               image={food.image}
-              amount={quantityToInclude}
-              addMore={addOneMore}
-              remove={removeOneMore}
-              addToCart={addToCart}
+              amount={quantitiesToInclude[food.foodId] || 0}
+              addMore={() => addOneMore(food.foodId)}
+              remove={() => removeOneMore(food.foodId)}
+              addToCart={() => addToCart(food.foodId)}
               editFood={() => handleEditFood(food.foodId)}
               openDetails={() => handleDetails(food.foodId)}
               isAdm={isAdm}
