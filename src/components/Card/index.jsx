@@ -5,7 +5,18 @@ import { BsPencil } from "react-icons/bs";
 import { Amount } from "../../components/Amount";
 import { ButtonBg } from "../../components/ButtonBg";
 
-export function Card({ isAdm, name, price, image, openDetails, editFood }) {
+export function Card({
+  isAdm,
+  name,
+  price,
+  image,
+  openDetails,
+  editFood,
+  amount,
+  addMore,
+  remove,
+  addToCart,
+}) {
   return (
     <Container>
       {isAdm ? (
@@ -20,8 +31,8 @@ export function Card({ isAdm, name, price, image, openDetails, editFood }) {
         <RxCaretRight size={20} />
       </div>
       <span>R${price}</span>
-      <Amount number={1} isAdm={isAdm} />
-      <ButtonBg title={"incluir"} isAdm={isAdm} />
+      <Amount number={amount} isAdm={isAdm} addMore={addMore} remove={remove} />
+      <ButtonBg title={"incluir"} isAdm={isAdm} onClick={addToCart} />
     </Container>
   );
 }

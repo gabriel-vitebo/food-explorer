@@ -12,6 +12,8 @@ import { Footer } from "../../components/Footer";
 export function Home() {
   const { user } = useAuth();
   const [categories, setCategories] = useState([]);
+  const [quantityToInclude, setQuantityToInclude] = useState(0);
+  const [quantityInCart, setQuantityInCart] = useState(0);
 
   const isAdm = user.isAdm;
   const navigate = useNavigate();
@@ -22,6 +24,23 @@ export function Home() {
 
   function handleEditFood(id) {
     navigate(`/editfood/${id}`);
+  }
+
+  function addOneMore() {
+    const result = quantityToInclude + 1;
+    setQuantityToInclude(result);
+  }
+
+  function removeOneMore() {
+    const result = quantityToInclude - 1;
+    if (quantityToInclude === 0) {
+      return setQuantityToInclude(0);
+    }
+    setQuantityToInclude(result);
+  }
+
+  function addToCart() {
+    setQuantityInCart(quantityToInclude);
   }
 
   useEffect(() => {
@@ -39,7 +58,7 @@ export function Home() {
 
   return (
     <Container>
-      <Header amount={3} />
+      <Header amount={quantityInCart} />
       <div className="brand">
         <img src="/src/assets/brend.png" alt="" />
       </div>
@@ -51,6 +70,10 @@ export function Home() {
               name={food.name}
               price={food.price}
               image={food.image}
+              amount={quantityToInclude}
+              addMore={addOneMore}
+              remove={removeOneMore}
+              addToCart={addToCart}
               editFood={() => handleEditFood(food.foodId)}
               openDetails={() => handleDetails(food.foodId)}
               isAdm={isAdm}

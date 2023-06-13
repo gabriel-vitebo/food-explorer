@@ -1,12 +1,12 @@
-import { Container } from "./styles"
-import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai"
+import { Container } from "./styles";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
-export function Amount({ number, isAdm }) {
+export function Amount({ number, isAdm, addMore, remove }) {
   return (
     <Container isAdm={isAdm}>
-      <AiOutlinePlus size={27} />
+      <AiOutlinePlus size={27} onClick={addMore} />
       {number}
-      <AiOutlineMinus size={27} />
+      <AiOutlineMinus size={27} onClick={remove} />
     </Container>
-  )
+  );
 }
