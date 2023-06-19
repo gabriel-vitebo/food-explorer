@@ -28,7 +28,7 @@ export function NewFood() {
   const [description, setDescription] = useState("");
 
   const [categories, setCategories] = useState([]);
-  const [selectedCategoryId, setSelectedCategoryId] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState({});
 
   const [imageFile, setImageFile] = useState(null);
 
@@ -67,7 +67,8 @@ export function NewFood() {
     formData.append("description", description);
     formData.append("price", price);
     formData.append("ingredients", JSON.stringify(ingredients));
-    formData.append("categoryId", selectedCategoryId.id);
+    formData.append("categoryId", selectedCategory.id);
+    console.log({ selectedCategory });
 
     await api.post("/foods", formData);
 
@@ -80,7 +81,8 @@ export function NewFood() {
       const response = (await api.get("/categories/all")).data;
       const firstCategory = response[0];
       setCategories(response);
-      setSelectedCategoryId(firstCategory);
+      setSelectedCategory(firstCategory);
+      console.log({ selectedCategory });
     }
     categoryName();
   }, []);
@@ -109,11 +111,13 @@ export function NewFood() {
             />
           </Section>
           <Section title={"Categoria"}>
-            <DropList onChange={(e) => setSelectedCategoryId(e.target.value)}>
+            <DropList
+              onChange={(e) => setSelectedCategory(JSON.parse(e.target.value))}
+            >
               {categories.map((category) => (
                 <option
                   key={category.id}
-                  value={category.id}
+                  value={JSON.stringify(category)}
                   className="option"
                 >
                   {category.name}
