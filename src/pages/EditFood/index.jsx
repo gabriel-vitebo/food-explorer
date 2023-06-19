@@ -32,7 +32,7 @@ export function EditFood() {
   const navigate = useNavigate();
 
   function backToHome() {
-    navigate("/");
+    navigate(-1);
   }
 
   function handleImageChange(event) {
@@ -63,7 +63,16 @@ export function EditFood() {
     await api.put(`/foods/${params.id}`, formData);
 
     alert("Prato atualizado com sucesso!");
-    navigate("/");
+    navigate(-1);
+  }
+
+  async function handleDelete() {
+    const confirm = window.confirm("Deseja excluir esse prato?");
+
+    if (confirm) {
+      await api.delete(`/foods/${params.id}`);
+      navigate("/");
+    }
   }
 
   useEffect(() => {
@@ -184,7 +193,7 @@ export function EditFood() {
             />
           </Section>
           <div className="buttons">
-            <ButtonBg title={"Excluir prato"} />
+            <ButtonBg title={"Excluir prato"} onClick={handleDelete} />
             <ButtonBg title={"Salvar alteração"} onClick={handleUpdate} />
           </div>
         </Form>
