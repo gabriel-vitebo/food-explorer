@@ -67,7 +67,7 @@ export const Content = styled.div`
     align-items: center;
 
     > button {
-      font-size: 1rem;
+      font-size: 1.4rem;
     }
   }
 `;

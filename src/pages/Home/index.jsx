@@ -27,6 +27,11 @@ export function Home() {
   }
 
   function addOneMore(id) {
+    const food = categories
+      .flatMap((category) => category.foods)
+      .find((food) => food.foodId === id);
+    const price = food.price;
+
     setQuantitiesToInclude((prevQuantities) => ({
       ...prevQuantities,
       [id]: (prevQuantities[id] || 0) + 1,

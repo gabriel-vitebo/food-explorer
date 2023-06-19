@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
+import { useAuth } from "../../hooks/auth";
 
 import { Container, Content } from "./styles";
 import { RxCaretLeft } from "react-icons/rx";
@@ -17,11 +18,18 @@ export function Details() {
   const [foodData, setFoodData] = useState(null);
   const [ingredients, setIngredients] = useState([]);
 
+  const { user } = useAuth();
   const params = useParams();
   const navigate = useNavigate();
 
+  const isAdm = user.isAdm;
+
   function backToHome() {
     navigate("/");
+  }
+
+  function handleEditFood(id) {
+    navigate(`/editfood/${id}`);
   }
 
   useEffect(() => {
@@ -52,12 +60,21 @@ export function Details() {
               })}
             </div>
             <div className="quantity-and-finalize">
-              <Amount number={"01"} />
-              <ButtonBg
-                icon={TfiReceipt}
-                title={"pedir"}
-                price={foodData.price}
-              />
+              {isAdm ? (
+                <ButtonBg
+                  title={"Editar Prato"}
+                  onClick={() => handleEditFood(params.id)}
+                />
+              ) : (
+                <>
+                  <Amount number={"01"} />
+                  <ButtonBg
+                    icon={TfiReceipt}
+                    title={"pedir"}
+                    price={foodData.price}
+                  />
+                </>
+              )}
             </div>
           </Content>
         </main>
