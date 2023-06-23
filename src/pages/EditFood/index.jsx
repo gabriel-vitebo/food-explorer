@@ -75,6 +75,11 @@ export function EditFood() {
     }
   }
 
+  function formatPrice(price) {
+    const formattedPrice = Number(price).toFixed(2);
+    return formattedPrice;
+  }
+
   useEffect(() => {
     let foodTmp = null;
 
@@ -118,7 +123,7 @@ export function EditFood() {
               size={22}
               icon={RxCaretLeft}
               title={"voltar"}
-              onClick={backToHome}
+              backToHome={backToHome}
             />
             <h1>Editar prato</h1>
           </header>
@@ -179,6 +184,9 @@ export function EditFood() {
               placeholder={"R$ 40,00"}
               value={food.price || ""}
               onChange={(e) => setFood({ ...food, price: e.target.value })}
+              onBlur={(e) =>
+                setFood({ ...food, price: formatPrice(e.target.value) })
+              }
             />
           </Section>
           <Section title={"Descrição"}>

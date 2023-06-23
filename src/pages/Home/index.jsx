@@ -83,7 +83,7 @@ export function Home() {
             <Card
               key={food.foodId}
               name={food.name}
-              price={food.price}
+              price={food.price.toFixed(2)}
               image={food.image}
               amount={quantitiesToInclude[food.foodId] || 0}
               addMore={() => addOneMore(food.foodId)}

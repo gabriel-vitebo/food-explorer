@@ -71,7 +71,7 @@ export function Details() {
                   <ButtonBg
                     icon={TfiReceipt}
                     title={"pedir"}
-                    price={foodData.price}
+                    price={foodData.price.toFixed(2)}
                   />
                 </>
               )}
