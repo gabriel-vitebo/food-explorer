@@ -1,5 +1,7 @@
+import { useState } from "react";
+
 import { Container } from "./styles";
-import { AiOutlineHeart } from "react-icons/ai";
+import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { RxCaretRight } from "react-icons/rx";
 import { BsPencil } from "react-icons/bs";
 import { Amount } from "../../components/Amount";
@@ -17,12 +19,16 @@ export function Card({
   remove,
   addToCart,
 }) {
+  const [favorite, setFavorite] = useState(false);
+
   return (
-    <Container>
+    <Container favorite={favorite}>
       {isAdm ? (
         <BsPencil size={25} onClick={editFood} />
+      ) : favorite ? (
+        <MdFavorite size={25} onClick={() => setFavorite(!favorite)} />
       ) : (
-        <AiOutlineHeart size={25} />
+        <MdFavoriteBorder size={25} onClick={() => setFavorite(!favorite)} />
       )}
 
       <img src={image} alt="foto do prato" />

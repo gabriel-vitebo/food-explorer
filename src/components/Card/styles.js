@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -17,6 +17,8 @@ export const Container = styled.div`
     left: 7.5rem;
     top: 2rem;
     cursor: pointer;
+    color: ${({ theme, favorite }) =>
+      favorite ? theme.COLORS.tomato100 : theme.COLORS.light300};
   }
 
   > img {
@@ -57,4 +59,4 @@ export const Container = styled.div`
   > div {
     margin-bottom: 2.4rem;
   }
-`
+`;

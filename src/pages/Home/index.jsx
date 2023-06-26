@@ -14,6 +14,7 @@ export function Home() {
   const [categories, setCategories] = useState([]);
   const [quantitiesToInclude, setQuantitiesToInclude] = useState({});
   const [quantityInCart, setQuantityInCart] = useState(0);
+  const [favorite, setFavorite] = useState(true);
 
   const isAdm = user.isAdm;
   const navigate = useNavigate();

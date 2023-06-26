@@ -85,7 +85,11 @@ export function EditFood() {
 
     async function fetchFood() {
       const response = await api.get(`/foods/${params.id}`);
-      setFood(response.data.food);
+      // setFood(response.data.food);
+      setFood({
+        ...response.data.food,
+        price: formatPrice(response.data.food.price),
+      });
       setIngredients(response.data.ingredients);
       foodTmp = response.data.food;
     }
