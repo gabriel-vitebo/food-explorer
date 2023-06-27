@@ -14,7 +14,7 @@ export function Home() {
   const [categories, setCategories] = useState([]);
   const [quantitiesToInclude, setQuantitiesToInclude] = useState({});
   const [quantityInCart, setQuantityInCart] = useState(0);
-  const [favorite, setFavorite] = useState(true);
+  let [toggleFavorite, setToggleFavorite] = useState(false);
 
   const isAdm = user.isAdm;
   const navigate = useNavigate();
@@ -28,11 +28,6 @@ export function Home() {
   }
 
   function addOneMore(id) {
-    const food = categories
-      .flatMap((category) => category.foods)
-      .find((food) => food.foodId === id);
-    const price = food.price;
-
     setQuantitiesToInclude((prevQuantities) => ({
       ...prevQuantities,
       [id]: (prevQuantities[id] || 0) + 1,
@@ -59,6 +54,21 @@ export function Home() {
     }));
   }
 
+  async function handleFavorite(id) {
+    setToggleFavorite((prevToggleFavorite) => !prevToggleFavorite);
+    console.log(`toggleFavorite: ${!toggleFavorite}`);
+    const food = categories
+      .flatMap((category) => category.foods)
+      .find((food) => food.foodId === id);
+    const foodId = food.foodId;
+    console.log({ foodId });
+
+    if ((toggleFavorite = true)) {
+      console.log("entrou aqui verdadeiro");
+      return await api.post("/favorites", { food_id: foodId });
+    }
+  }
+
   useEffect(() => {
     async function showFood() {
       const response = await api.get("/categories?name");
@@ -69,7 +79,12 @@ export function Home() {
 
       setCategories(uniqueCategories);
     }
+    // async function checkFavorites() {
+    //   const response = await api.get("/favorites");
+    //   const favoriteFoods = response.data;
+    // }
     showFood();
+    //checkFavorites();
   }, []);
 
   return (
@@ -84,6 +99,7 @@ export function Home() {
             <Card
               key={food.foodId}
               name={food.name}
+              handleFavorite={() => handleFavorite(food.foodId)}
               price={food.price.toFixed(2)}
               image={food.image}
               amount={quantitiesToInclude[food.foodId] || 0}

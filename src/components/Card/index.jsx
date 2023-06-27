@@ -18,17 +18,22 @@ export function Card({
   addMore,
   remove,
   addToCart,
+  handleFavorite,
 }) {
   const [favorite, setFavorite] = useState(false);
+  function handleFavoriteClick() {
+    setFavorite(!favorite);
+    handleFavorite(!favorite);
+  }
 
   return (
     <Container favorite={favorite}>
       {isAdm ? (
         <BsPencil size={25} onClick={editFood} />
       ) : favorite ? (
-        <MdFavorite size={25} onClick={() => setFavorite(!favorite)} />
+        <MdFavorite size={25} onClick={() => handleFavoriteClick()} />
       ) : (
-        <MdFavoriteBorder size={25} onClick={() => setFavorite(!favorite)} />
+        <MdFavoriteBorder size={25} onClick={() => handleFavoriteClick()} />
       )}
 
       <img src={image} alt="foto do prato" />
