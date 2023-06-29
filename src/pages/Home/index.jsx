@@ -14,7 +14,7 @@ export function Home() {
   const [categories, setCategories] = useState([]);
   const [quantitiesToInclude, setQuantitiesToInclude] = useState({});
   const [quantityInCart, setQuantityInCart] = useState(0);
-  let [toggleFavorite, setToggleFavorite] = useState(false);
+  const [favoriteFoods, setFavoriteFoods] = useState([]);
 
   const isAdm = user.isAdm;
   const navigate = useNavigate();
@@ -55,37 +55,46 @@ export function Home() {
   }
 
   async function handleFavorite(id) {
-    setToggleFavorite((prevToggleFavorite) => !prevToggleFavorite);
-    console.log(`toggleFavorite: ${!toggleFavorite}`);
-    const food = categories
-      .flatMap((category) => category.foods)
-      .find((food) => food.foodId === id);
-    const foodId = food.foodId;
-    console.log({ foodId });
-
-    if ((toggleFavorite = true)) {
-      console.log("entrou aqui verdadeiro");
-      return await api.post("/favorites", { food_id: foodId });
+    try {
+      const isFavorite = favoriteFoods.includes(id);
+      console.log({ isFavorite });
+      if (isFavorite) {
+        await api.delete(`/favorites/${id}`);
+        setFavoriteFoods((prevFavoriteFoods) =>
+          prevFavoriteFoods.filter((foodId) => foodId !== id)
+        );
+      } else {
+        await api.post("/favorites", { food_id: id });
+        setFavoriteFoods((prevFavoriteFoods) => [...prevFavoriteFoods, id]);
+      }
+    } catch (error) {
+      console.log("Erro ao manipular prato favorito:", error);
     }
   }
 
   useEffect(() => {
-    async function showFood() {
-      const response = await api.get("/categories?name");
-      const uniqueCategories = response.data.filter(
-        (category, index, self) =>
-          index === self.findIndex((c) => c.name === category.name)
-      );
+    async function fetchData() {
+      try {
+        const response = await api.get("/categories");
+        const uniqueCategories = response.data.filter(
+          (category, index, self) =>
+            index === self.findIndex((c) => c.name === category.name)
+        );
+        setCategories(uniqueCategories);
 
-      setCategories(uniqueCategories);
+        const favoritesResponse = await api.get(`/favorites`);
+        const favoriteFoods = favoritesResponse.data.foodIds || [];
+        const favoriteFoodString = favoriteFoods.map((food) => {
+          return food.food_id;
+        });
+        setFavoriteFoods(favoriteFoodString);
+      } catch (error) {
+        console.log("Erro ao buscar dados dos favoritos", error);
+      }
     }
-    // async function checkFavorites() {
-    //   const response = await api.get("/favorites");
-    //   const favoriteFoods = response.data;
-    // }
-    showFood();
-    //checkFavorites();
-  }, []);
+
+    fetchData();
+  }, [user.id]);
 
   return (
     <Container>
@@ -100,6 +109,7 @@ export function Home() {
               key={food.foodId}
               name={food.name}
               handleFavorite={() => handleFavorite(food.foodId)}
+              isFavorite={favoriteFoods.includes(food.foodId)}
               price={food.price.toFixed(2)}
               image={food.image}
               amount={quantitiesToInclude[food.foodId] || 0}
