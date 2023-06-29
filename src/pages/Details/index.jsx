@@ -17,6 +17,7 @@ import { Footer } from "../../components/Footer";
 export function Details() {
   const [foodData, setFoodData] = useState(null);
   const [ingredients, setIngredients] = useState([]);
+  const [quantitiesToInclude, setQuantitiesToInclude] = useState({});
 
   const { user } = useAuth();
   const params = useParams();
@@ -30,6 +31,23 @@ export function Details() {
 
   function handleEditFood(id) {
     navigate(`/editfood/${id}`);
+  }
+
+  function addOneMore(id) {
+    setQuantitiesToInclude((prevQuantities) => ({
+      ...prevQuantities,
+      [id]: (prevQuantities[id] || 0) + 1,
+    }));
+  }
+
+  function removeOneMore(id) {
+    if (!quantitiesToInclude[id]) {
+      return;
+    }
+    setQuantitiesToInclude((prevQuantities) => ({
+      ...prevQuantities,
+      [id]: prevQuantities[id] - 1,
+    }));
   }
 
   useEffect(() => {
@@ -67,7 +85,11 @@ export function Details() {
                 />
               ) : (
                 <>
-                  <Amount number={"01"} />
+                  <Amount
+                    number={quantitiesToInclude[params.id] || 0}
+                    addMore={() => addOneMore(params.id)}
+                    remove={() => removeOneMore(params.id)}
+                  />
                   <ButtonBg
                     icon={TfiReceipt}
                     title={"pedir"}
