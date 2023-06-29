@@ -1,6 +1,20 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components";
+
+const slide = keyframes`
+  0% {
+        opacity: 0;
+        transform: translatex(-3.3rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translatex(0);
+    }
+`;
 
 export const Container = styled.header`
+  animation: ${slide} 0.6s 0.3s backwards;
+
   display: flex;
   grid-area: header;
   width: 100%;
@@ -32,7 +46,7 @@ export const Container = styled.header`
       color: ${({ theme }) => theme.COLORS.light100};
     }
   }
-`
+`;
 
 export const Receipt = styled.div`
   visibility: ${({ isAdm }) => isAdm && "hidden"};
@@ -53,4 +67,4 @@ export const Receipt = styled.div`
     right: 1.8rem;
     top: 3.5rem;
   }
-`
+`;
