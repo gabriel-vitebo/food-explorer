@@ -1,6 +1,32 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components";
+
+const slide = keyframes`
+  0% {
+        opacity: 0;
+        transform: translatex(-3.3rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translatex(0);
+    }
+`;
+
+const dropDown = keyframes`
+  0% {
+        opacity: 0;
+        transform: translatex(-3.3rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translatex(0);
+    }
+`;
 
 export const Container = styled.div`
+  animation: ${slide} 0.3s 0.1s backwards;
+
   position: absolute;
   top: 11.4rem;
   left: 0;
@@ -11,6 +37,8 @@ export const Container = styled.div`
   width: 100%;
 
   ul {
+    animation: ${dropDown} 0.6s 0.3s backwards;
+
     list-style: none;
 
     margin-top: 4.5rem;
@@ -29,4 +57,4 @@ export const Container = styled.div`
       color: ${({ theme }) => theme.COLORS.light300};
     }
   }
-`
+`;

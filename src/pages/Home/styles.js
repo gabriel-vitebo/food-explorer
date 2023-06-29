@@ -1,10 +1,24 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components";
+
+const slide = keyframes`
+  0% {
+        opacity: 0;
+        transform: translatex(-3.3rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translatex(0);
+    }
+`;
 
 export const Container = styled.div`
   width: 100%;
   height: auto;
 
   > .brand {
+    animation: ${slide} 0.6s 0.3s backwards;
+
     width: 95%;
 
     img {
@@ -18,4 +32,4 @@ export const Container = styled.div`
       margin: 2.4rem 2.4rem;
     }
   }
-`
+`;
