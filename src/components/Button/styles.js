@@ -1,7 +1,20 @@
-import styled from "styled-components"
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import styled, { keyframes } from "styled-components";
+
+const slide = keyframes`
+  0% {
+        opacity: 0;
+        transform: translatex(-3.3rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translatex(0);
+    }
+`;
 
 export const Container = styled(Link)`
+  animation: ${slide} 0.6s 0.3s backwards;
   background: none;
   border: none;
 
@@ -18,4 +31,4 @@ export const Container = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-`
+`;

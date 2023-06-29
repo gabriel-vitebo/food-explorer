@@ -1,10 +1,10 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Container = styled.div`
   height: 100vh;
   display: flex;
   align-items: stretch;
-`
+`;
 
 export const Form = styled.form`
   width: 31.6rem;
@@ -31,4 +31,4 @@ export const Form = styled.form`
     font-size: 1.4rem;
     color: ${({ theme }) => theme.COLORS.light100};
   }
-`
+`;
