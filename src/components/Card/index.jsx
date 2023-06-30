@@ -44,7 +44,7 @@ export function Card({
         <h3 onClick={openDetails}>{name}</h3>
         <RxCaretRight size={20} />
       </div>
-      <span>R${calculatedPrice}</span>
+      <span>R${Number(calculatedPrice).toFixed(2)}</span>
       <Amount number={amount} isAdm={isAdm} addMore={addMore} remove={remove} />
       <ButtonBg title={"incluir"} isAdm={isAdm} onClick={addToCart} />
     </Container>
