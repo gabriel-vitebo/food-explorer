@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import { Container } from "./styles";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { RxCaretRight } from "react-icons/rx";
@@ -21,6 +20,15 @@ export function Card({
   handleFavorite,
   isFavorite,
 }) {
+  function calcultePrice() {
+    if (amount === 0) {
+      return price;
+    }
+    return price * amount;
+  }
+
+  const calculatedPrice = calcultePrice();
+
   return (
     <Container favorite={isFavorite} isFavorite={isFavorite}>
       {isAdm ? (
@@ -36,7 +44,7 @@ export function Card({
         <h3 onClick={openDetails}>{name}</h3>
         <RxCaretRight size={20} />
       </div>
-      <span>R${price}</span>
+      <span>R${calculatedPrice}</span>
       <Amount number={amount} isAdm={isAdm} addMore={addMore} remove={remove} />
       <ButtonBg title={"incluir"} isAdm={isAdm} onClick={addToCart} />
     </Container>
