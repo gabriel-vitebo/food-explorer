@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { device } from "../../styles/responsive";
 
 const slide = keyframes`
   0% {
@@ -44,6 +45,19 @@ export const Container = styled.header`
       font-weight: 700;
       font-family: ${({ theme }) => theme.FONTS.Roboto};
       color: ${({ theme }) => theme.COLORS.light100};
+    }
+  }
+
+  .toDesktop {
+    display: none;
+  }
+
+  @media ${device.desktop} {
+    gap: 3.2rem;
+    justify-content: space-around;
+    .toDesktop {
+      display: flex;
+      width: auto;
     }
   }
 `;

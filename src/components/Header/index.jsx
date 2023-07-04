@@ -9,8 +9,11 @@ import { OpenMenu } from "../OpenMenu";
 import { CloseMenu } from "../CloseMenu";
 import { Logo } from "../Logo";
 import { Menu } from "../Menu";
+import { Input } from "../Input";
 
-export function Header({ amount, searching }) {
+import { AiOutlineSearch } from "react-icons/ai";
+
+export function Header({ amount }) {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
@@ -37,6 +40,11 @@ export function Header({ amount, searching }) {
         />
       )}
       {!openMenu && <Logo isAdm={isAdm} onClick={backToHome} />}
+      <Input
+        toDesktop={"toDesktop"}
+        icon={AiOutlineSearch}
+        placeholder={"Busque por pratos ou ingredientes"}
+      />
 
       {!openMenu && (
         <Receipt isAdm={isAdm}>

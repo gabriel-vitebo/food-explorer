@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { device } from "../../styles/responsive";
 
 const rotate = keyframes`
   0% {
@@ -47,5 +48,9 @@ export const Container = styled.div`
     text-decoration: none;
     background: none;
     border: none;
+
+    @media ${device.desktop} {
+      display: none;
+    }
   }
 `;

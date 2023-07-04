@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { device } from "../../styles/responsive";
 
 const slide = keyframes`
   0% {
@@ -31,5 +32,9 @@ export const Container = styled.div`
     h2 {
       margin: 2.4rem 2.4rem;
     }
+  }
+
+  @media ${device.desktop} {
+    max-width: 1024px;
   }
 `;

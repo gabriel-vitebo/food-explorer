@@ -1,12 +1,12 @@
-import { Container } from "./styles"
+import { Container } from "./styles";
 
-export function Input({ icon: Icon, ...rest }) {
+export function Input({ icon: Icon, toDesktop, ...rest }) {
   return (
-    <Container>
+    <Container className={toDesktop}>
       <div className="input-area">
         {Icon && <Icon size={24} />}
         <input {...rest} />
       </div>
     </Container>
-  )
+  );
 }
