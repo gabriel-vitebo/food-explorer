@@ -1,23 +1,23 @@
-import { useState } from "react"
+import { useState } from "react";
 
-import { useAuth } from "../../hooks/auth"
-import { useNavigate } from "react-router-dom"
+import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
 
-import { Container, Receipt } from "./styles"
-import { TfiReceipt } from "react-icons/tfi"
-import { OpenMenu } from "../OpenMenu"
-import { CloseMenu } from "../CloseMenu"
-import { Logo } from "../Logo"
-import { Menu } from "../Menu"
+import { Container, Receipt } from "./styles";
+import { TfiReceipt } from "react-icons/tfi";
+import { OpenMenu } from "../OpenMenu";
+import { CloseMenu } from "../CloseMenu";
+import { Logo } from "../Logo";
+import { Menu } from "../Menu";
 
-export function Header({ amount }) {
-  const { user } = useAuth()
-  const navigate = useNavigate()
-  const [openMenu, setOpenMenu] = useState(false)
-  const [isAdm, setIsAdm] = useState(user.isAdm)
+export function Header({ amount, searching }) {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const [openMenu, setOpenMenu] = useState(false);
+  const [isAdm, setIsAdm] = useState(user.isAdm);
 
   function backToHome() {
-    navigate("/")
+    navigate("/");
   }
 
   return (
@@ -26,13 +26,13 @@ export function Header({ amount }) {
         <CloseMenu
           title={"Menu"}
           onClick={() => {
-            setOpenMenu(!openMenu)
+            setOpenMenu(!openMenu);
           }}
         />
       ) : (
         <OpenMenu
           onClick={() => {
-            setOpenMenu(!openMenu)
+            setOpenMenu(!openMenu);
           }}
         />
       )}
@@ -47,5 +47,5 @@ export function Header({ amount }) {
 
       {openMenu && <Menu isAdm={isAdm} />}
     </Container>
-  )
+  );
 }
