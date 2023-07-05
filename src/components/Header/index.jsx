@@ -13,9 +13,10 @@ import { Menu } from "../Menu";
 
 import { TfiReceipt } from "react-icons/tfi";
 import { AiOutlineSearch } from "react-icons/ai";
+import { GoSignOut } from "react-icons/go";
 
 export function Header({ amount }) {
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
   const [isAdm, setIsAdm] = useState(user.isAdm);
@@ -59,6 +60,8 @@ export function Header({ amount }) {
         icon={TfiReceipt}
         amount={`pedidos (${amount})`}
       />
+
+      <GoSignOut size={26} className={"toDesktop exit"} onClick={signOut} />
 
       {openMenu && <Menu isAdm={isAdm} />}
     </Container>
