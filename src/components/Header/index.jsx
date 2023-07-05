@@ -4,13 +4,14 @@ import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
 
 import { Container, Receipt } from "./styles";
-import { TfiReceipt } from "react-icons/tfi";
+import { ButtonBg } from "../ButtonBg";
 import { OpenMenu } from "../OpenMenu";
 import { CloseMenu } from "../CloseMenu";
 import { Logo } from "../Logo";
-import { Menu } from "../Menu";
 import { Input } from "../Input";
+import { Menu } from "../Menu";
 
+import { TfiReceipt } from "react-icons/tfi";
 import { AiOutlineSearch } from "react-icons/ai";
 
 export function Header({ amount }) {
@@ -52,6 +53,12 @@ export function Header({ amount }) {
           <span>{amount}</span>
         </Receipt>
       )}
+
+      <ButtonBg
+        className={"toDesktop button"}
+        icon={TfiReceipt}
+        amount={`pedidos (${amount})`}
+      />
 
       {openMenu && <Menu isAdm={isAdm} />}
     </Container>

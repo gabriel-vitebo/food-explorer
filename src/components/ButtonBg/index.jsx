@@ -1,10 +1,11 @@
-import { Container } from "./styles"
+import { Container } from "./styles";
 
 export function ButtonBg({
   icon: Icon,
   title,
   price,
   isAdm,
+  amount,
   loading = false,
   ...rest
 }) {
@@ -13,6 +14,7 @@ export function ButtonBg({
       {Icon && <Icon size={21} />}
       {loading ? "carregando..." : title}
       {price ? ` . R$ ${price}` : ""}
+      {amount}
     </Container>
-  )
+  );
 }

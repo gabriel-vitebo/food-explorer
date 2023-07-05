@@ -59,6 +59,17 @@ export const Container = styled.header`
       display: flex;
       width: auto;
     }
+
+    .button {
+      display: flex;
+      width: 20rem;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-left: 0.8rem;
+      font-weight: 500;
+      font-family: ${({ theme }) => theme.FONTS.Poppins};
+      color: ${({ theme }) => theme.COLORS.light100};
+    }
   }
 `;
 
@@ -80,5 +91,9 @@ export const Receipt = styled.div`
     position: absolute;
     right: 1.8rem;
     top: 3.5rem;
+  }
+
+  @media ${device.desktop} {
+    display: none;
   }
 `;
