@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { device } from "../../styles/responsive";
 
 const slide = keyframes`
    0% {
@@ -19,10 +20,10 @@ const dropDown = keyframes`
     }
 
     100% {
-        opacity: 1;
-        transform: translatex(0);
+      opacity: 1;
+      transform: translatex(0);
     }
-`;
+    `;
 
 export const Container = styled.section`
   > h2 {
@@ -39,5 +40,17 @@ export const Container = styled.section`
     flex-wrap: nowrap;
     gap: 1.6rem;
     overflow-x: scroll;
+  }
+
+  @media ${device.desktop} {
+    > h2 {
+      font-size: 3.2rem;
+    }
+
+    > div {
+      max-width: 100%;
+      overflow-x: hidden;
+      scrollbar-width: none;
+    }
   }
 `;

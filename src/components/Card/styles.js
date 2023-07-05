@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { device } from "../../styles/responsive";
 
 const slide = keyframes`
   0% {
@@ -57,6 +58,10 @@ export const Container = styled.div`
     }
   }
 
+  .toDesktop {
+    display: none;
+  }
+
   > span {
     font-family: ${({ theme }) => theme.FONTS.Roboto};
     font-weight: 400;
@@ -72,5 +77,56 @@ export const Container = styled.div`
 
   > div {
     margin-bottom: 2.4rem;
+  }
+
+  .finishBuy {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    width: 16.2rem;
+    align-items: center;
+  }
+
+  @media ${device.desktop} {
+    .toDesktop {
+      display: flex;
+    }
+
+    width: 25.6rem;
+
+    > img {
+      width: 13rem;
+      height: 13rem;
+    }
+
+    > .foodname {
+      h3 {
+        font-weight: 700;
+        font-size: 2.4rem;
+      }
+    }
+
+    > p {
+      font-family: ${({ theme }) => theme.FONTS.Roboto};
+      height: 3.4rem;
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 1.6rem;
+      color: ${({ theme }) => theme.COLORS.light400};
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 1.5rem 0;
+    }
+
+    > span {
+      font-size: 3.2rem;
+      margin: 1.5rem 0;
+    }
+
+    .finishBuy {
+      flex-direction: row;
+      width: 20.8rem;
+      margin-top: 1.5rem;
+    }
   }
 `;

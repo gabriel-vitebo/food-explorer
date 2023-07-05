@@ -81,6 +81,7 @@ export function Home() {
             index === self.findIndex((c) => c.name === category.name)
         );
         setCategories(uniqueCategories);
+        console.log({ categories });
 
         const favoritesResponse = await api.get(`/favorites`);
         const favoriteFoods = favoritesResponse.data.foodIds || [];
@@ -108,6 +109,7 @@ export function Home() {
             <Card
               key={food.foodId}
               name={food.name}
+              description={food.description}
               handleFavorite={() => handleFavorite(food.foodId)}
               isFavorite={favoriteFoods.includes(food.foodId)}
               price={food.price.toFixed(2)}

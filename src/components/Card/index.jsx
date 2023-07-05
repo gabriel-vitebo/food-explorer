@@ -19,6 +19,7 @@ export function Card({
   addToCart,
   handleFavorite,
   isFavorite,
+  description,
 }) {
   function calcultePrice() {
     if (amount === 0) {
@@ -42,11 +43,20 @@ export function Card({
       <img src={image} alt="foto do prato" />
       <div className="foodname">
         <h3 onClick={openDetails}>{name}</h3>
-        <RxCaretRight size={20} />
+        <RxCaretRight size={20} className="iconToDesktop" />
       </div>
+      <p className="toDesktop">{description}</p>
       <span>R${Number(calculatedPrice).toFixed(2)}</span>
-      <Amount number={amount} isAdm={isAdm} addMore={addMore} remove={remove} />
-      <ButtonBg title={"incluir"} isAdm={isAdm} onClick={addToCart} />
+      <div className="finishBuy">
+        <Amount
+          number={amount}
+          isAdm={isAdm}
+          addMore={addMore}
+          remove={remove}
+          className={"amountStyle"}
+        />
+        <ButtonBg title={"incluir"} isAdm={isAdm} onClick={addToCart} />
+      </div>
     </Container>
   );
 }
