@@ -53,11 +53,14 @@ export const Container = styled.header`
   }
 
   @media ${device.desktop} {
+    justify-content: center;
     gap: 3.2rem;
-    justify-content: space-around;
     .toDesktop {
       display: flex;
-      width: auto;
+    }
+
+    .input {
+      width: 30%;
     }
 
     .button {

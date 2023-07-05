@@ -43,7 +43,7 @@ export function Header({ amount }) {
       )}
       {!openMenu && <Logo isAdm={isAdm} onClick={backToHome} />}
       <Input
-        toDesktop={"toDesktop"}
+        toDesktop={"toDesktop input"}
         icon={AiOutlineSearch}
         placeholder={"Busque por pratos ou ingredientes"}
       />
