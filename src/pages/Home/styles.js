@@ -35,6 +35,10 @@ export const Container = styled.div`
   }
 
   @media ${device.desktop} {
+    > .brand {
+      display: none;
+    }
+
     margin: 0 auto;
     display: flex;
     flex-direction: column;
