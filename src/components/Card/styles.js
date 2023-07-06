@@ -46,7 +46,8 @@ export const Container = styled.div`
 
   > .foodname {
     display: flex;
-    align-items: center;
+    text-align: center;
+
     h3 {
       height: 2.4rem;
       line-height: 2.4rem;

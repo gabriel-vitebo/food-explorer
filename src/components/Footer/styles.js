@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { device } from "../../styles/responsive";
 
 const slide = keyframes`
   0% {
@@ -37,8 +38,29 @@ export const Container = styled.footer`
 
   p {
     font-family: ${({ theme }) => theme.FONTS.Footer};
-    font-weight: 700;
+    font-weight: 400;
     font-size: 1.2rem;
     color: ${({ theme }) => theme.COLORS.light200};
+  }
+
+  @media ${device.desktop} {
+    width: 100vw;
+    padding: 0 12.3rem;
+    justify-content: space-between;
+    text-align: center;
+
+    .logo {
+      img {
+        width: 3rem;
+        height: 3rem;
+      }
+      h3 {
+        font-size: 2.4rem;
+      }
+    }
+
+    p {
+      font-size: 1.4rem;
+    }
   }
 `;

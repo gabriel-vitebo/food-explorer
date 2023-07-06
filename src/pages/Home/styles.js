@@ -33,4 +33,13 @@ export const Container = styled.div`
       margin: 2.4rem 2.4rem;
     }
   }
+
+  @media ${device.desktop} {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+  }
 `;

@@ -43,6 +43,9 @@ export const Container = styled.section`
   }
 
   @media ${device.desktop} {
+    max-width: 90%;
+    width: 112rem;
+
     > h2 {
       font-size: 3.2rem;
     }
