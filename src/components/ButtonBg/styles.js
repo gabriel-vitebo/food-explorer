@@ -32,4 +32,10 @@ export const Container = styled.button`
   width: 100%;
   border: none;
   border-radius: 0.5rem;
+
+  :hover {
+    font-size: 1.6rem;
+    transform: scale(1.1);
+    background-color: ${({ theme }) => theme.COLORS.tomato200};
+  }
 `;

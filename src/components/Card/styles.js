@@ -99,10 +99,20 @@ export const Container = styled.div`
       height: 13rem;
     }
 
+    > img:hover,
+    span:hover {
+      transform: scale(1.1);
+    }
+
     > .foodname {
       h3 {
         font-weight: 700;
         font-size: 2.4rem;
+        cursor: pointer;
+      }
+
+      h3:hover {
+        transform: scale(1.1);
       }
     }
 

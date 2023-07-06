@@ -73,6 +73,11 @@ export const Container = styled.header`
       font-family: ${({ theme }) => theme.FONTS.Poppins};
       color: ${({ theme }) => theme.COLORS.light100};
     }
+
+    .exit:hover {
+      transform: scale(1.3);
+      cursor: pointer;
+    }
   }
 `;
 
