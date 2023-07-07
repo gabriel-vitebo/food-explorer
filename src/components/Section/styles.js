@@ -62,6 +62,8 @@ export const Container = styled.section`
       height: 43.1rem;
       flex-shrink: 0;
       z-index: 1;
+      left: 0; /* Alteração: posiciona à esquerda */
+      top: 0; /* Alteração: posiciona no topo */
     }
 
     .flagLeft {
@@ -72,13 +74,13 @@ export const Container = styled.section`
 
     .blocFlagRight {
       position: absolute;
-      left: 105rem;
+      right: 0; /* Alteração: posiciona à direita */
       background: linear-gradient(
         90deg,
         rgba(0, 10, 15, 0.27%),
         rgba(0, 10, 15, 100%)
       );
-      width: -22.4rem;
+      width: 22.4rem;
       height: 43.1rem;
       flex-shrink: 0;
       z-index: 1;
@@ -87,6 +89,7 @@ export const Container = styled.section`
     .flagRight {
       position: absolute;
       top: 13.5rem;
+      right: 0; /* Alteração: posiciona no topo */
       z-index: 1;
     }
 
@@ -100,6 +103,9 @@ export const Container = styled.section`
     > div {
       max-width: 100%;
       position: relative;
+
+      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
   }
 `;
