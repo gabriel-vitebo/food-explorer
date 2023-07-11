@@ -15,7 +15,7 @@ import { TfiReceipt } from "react-icons/tfi";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GoSignOut } from "react-icons/go";
 
-export function Header({ amount }) {
+export function Header({ amount, searchingFood }) {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
@@ -46,6 +46,7 @@ export function Header({ amount }) {
         toDesktop={"toDesktop input"}
         icon={AiOutlineSearch}
         placeholder={"Busque por pratos ou ingredientes"}
+        onChange={searchingFood}
       />
 
       {!openMenu && (

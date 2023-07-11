@@ -62,8 +62,8 @@ export const Container = styled.section`
       height: 43.1rem;
       flex-shrink: 0;
       z-index: 1;
-      left: 0; /* Alteração: posiciona à esquerda */
-      top: 0; /* Alteração: posiciona no topo */
+      left: 0;
+      top: 0;
     }
 
     .flagLeft {
@@ -74,7 +74,7 @@ export const Container = styled.section`
 
     .blocFlagRight {
       position: absolute;
-      right: 0; /* Alteração: posiciona à direita */
+      right: 0;
       background: linear-gradient(
         90deg,
         rgba(0, 10, 15, 0.27%),
@@ -89,7 +89,7 @@ export const Container = styled.section`
     .flagRight {
       position: absolute;
       top: 13.5rem;
-      right: 0; /* Alteração: posiciona no topo */
+      right: 0;
       z-index: 1;
     }
 

@@ -15,6 +15,8 @@ export function Home() {
   const [quantitiesToInclude, setQuantitiesToInclude] = useState({});
   const [quantityInCart, setQuantityInCart] = useState(0);
   const [favoriteFoods, setFavoriteFoods] = useState([]);
+  const [search, setSearch] = useState("");
+  const [fetchedFoods, setFetchedFoods] = useState([]);
 
   const isAdm = user.isAdm;
   const navigate = useNavigate();
@@ -97,12 +99,45 @@ export function Home() {
     fetchData();
   }, [user.id]);
 
+  useEffect(() => {
+    async function fetchFoods() {
+      const response = await api.get(`/foods?name=${search}`);
+      setFetchedFoods(response.data);
+    }
+    console.log({ fetchedFoods });
+    fetchFoods();
+  }, [search]);
+
   return (
     <Container>
-      <Header amount={quantityInCart} />
+      <Header
+        amount={quantityInCart}
+        value={search}
+        searchingFood={(e) => setSearch(e.target.value)}
+      />
       <div className="brand">
         <img src="/src/assets/brend.png" alt="" />
       </div>
+      {fetchedFoods.length > 0 && (
+        <Section title="Pratos buscados">
+          {fetchedFoods.listingTheFoods.map((food) => (
+            <Card
+              key={food.id}
+              name={food.name}
+              description={food.description}
+              image={fetchedFoods.imageName}
+              price={food.price.toFixed(2)}
+              amount={quantitiesToInclude[food.id] || 0}
+              addMore={() => addOneMore(food.id)}
+              remove={() => removeOneMore(food.id)}
+              addToCart={() => addToCart(food.id)}
+              editFood={() => handleEditFood(food.id)}
+              openDetails={() => handleDetails(food.id)}
+              isAdm={isAdm}
+            />
+          ))}
+        </Section>
+      )}
       {categories.map((category) => (
         <Section title={category.name} key={category.categoryId}>
           {category.foods.map((food) => (

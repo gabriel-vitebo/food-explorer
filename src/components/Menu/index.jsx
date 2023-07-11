@@ -1,18 +1,19 @@
-import { useNavigate } from "react-router-dom"
-import { Container } from "./styles"
-import { useAuth } from "../../hooks/auth"
+import { useNavigate } from "react-router-dom";
+import { Container } from "./styles";
+import { useAuth } from "../../hooks/auth";
 
-import { Input } from "../Input"
+import { Input } from "../Input";
 
-import { AiOutlineSearch } from "react-icons/ai"
+import { AiOutlineSearch } from "react-icons/ai";
 
 export function Menu({ isAdm }) {
-  const navigate = useNavigate()
-  const { signOut } = useAuth()
+  const navigate = useNavigate();
+  const { signOut } = useAuth();
 
   function createFood() {
-    navigate("/newfood/:id")
+    navigate("/newfood/:id");
   }
+
   return (
     <Container>
       <Input
@@ -30,5 +31,5 @@ export function Menu({ isAdm }) {
         )}
       </ul>
     </Container>
-  )
+  );
 }
