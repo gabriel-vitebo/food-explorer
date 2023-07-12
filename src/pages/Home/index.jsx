@@ -101,8 +101,12 @@ export function Home() {
 
   useEffect(() => {
     async function fetchFoods() {
-      const response = await api.get(`/foods?name=${search}`);
-      setFetchedFoods(response.data);
+      if (search.length) {
+        const response = await api.get(`/foods?name=${search}`);
+        setFetchedFoods(response.data);
+      } else {
+        setFetchedFoods([]);
+      }
     }
     console.log({ fetchedFoods });
     fetchFoods();
@@ -120,12 +124,12 @@ export function Home() {
       </div>
       {fetchedFoods.length > 0 && (
         <Section title="Pratos buscados">
-          {fetchedFoods.listingTheFoods.map((food) => (
+          {fetchedFoods.map((food) => (
             <Card
               key={food.id}
               name={food.name}
               description={food.description}
-              image={fetchedFoods.imageName}
+              image={food.image}
               price={food.price.toFixed(2)}
               amount={quantitiesToInclude[food.id] || 0}
               addMore={() => addOneMore(food.id)}
