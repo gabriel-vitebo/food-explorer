@@ -25,6 +25,10 @@ export function Header({ amount, searchingFood }) {
     navigate("/");
   }
 
+  function createFood() {
+    navigate("/newfood/:id");
+  }
+
   return (
     <Container>
       {openMenu ? (
@@ -56,11 +60,19 @@ export function Header({ amount, searchingFood }) {
         </Receipt>
       )}
 
-      <ButtonBg
-        className={"toDesktop button"}
-        icon={TfiReceipt}
-        amount={`pedidos (${amount})`}
-      />
+      {isAdm ? (
+        <ButtonBg
+          className={"buttonAdm"}
+          title={"Novo Prato"}
+          onClick={createFood}
+        />
+      ) : (
+        <ButtonBg
+          className={"toDesktop button"}
+          icon={TfiReceipt}
+          amount={`pedidos (${amount})`}
+        />
+      )}
 
       <GoSignOut size={26} className={"toDesktop exit"} onClick={signOut} />
 

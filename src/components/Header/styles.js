@@ -74,6 +74,11 @@ export const Container = styled.header`
       color: ${({ theme }) => theme.COLORS.light100};
     }
 
+    .buttonAdm {
+      width: 21.6rem;
+      font-size: 1.4rem;
+    }
+
     .exit:hover {
       transform: scale(1.3);
       cursor: pointer;

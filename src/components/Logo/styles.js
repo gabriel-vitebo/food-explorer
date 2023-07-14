@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { device } from "../../styles/responsive";
 
 const slide = keyframes`
   0% {
@@ -33,5 +34,23 @@ export const Container = styled.div`
     font-weight: 400;
     font-family: ${({ theme }) => theme.FONTS.Roboto};
     color: ${({ theme }) => theme.COLORS.cake200};
+  }
+
+  @media ${device.desktop} {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      h2 {
+        font-size: 2.4rem;
+      }
+    }
+
+    .adm {
+      flex-direction: column;
+    }
   }
 `;
