@@ -51,48 +51,6 @@ export const Container = styled.section`
       display: flex;
     }
 
-    .blocFlagLeft {
-      position: absolute;
-      background: linear-gradient(
-        90deg,
-        rgba(0, 10, 15, 100%),
-        rgba(0, 10, 15, 0.27%)
-      );
-      width: 22.4rem;
-      height: 43.1rem;
-      flex-shrink: 0;
-      z-index: 1;
-      left: 0;
-      top: 0;
-    }
-
-    .flagLeft {
-      position: absolute;
-      top: 13.5rem;
-      z-index: 1;
-    }
-
-    .blocFlagRight {
-      position: absolute;
-      right: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(0, 10, 15, 0.27%),
-        rgba(0, 10, 15, 100%)
-      );
-      width: 22.4rem;
-      height: 43.1rem;
-      flex-shrink: 0;
-      z-index: 1;
-    }
-
-    .flagRight {
-      position: absolute;
-      top: 13.5rem;
-      right: 0;
-      z-index: 1;
-    }
-
     max-width: 90%;
     width: 112rem;
 
@@ -104,7 +62,6 @@ export const Container = styled.section`
       max-width: 100%;
       position: relative;
 
-      overflow-x: hidden;
       scroll-behavior: smooth;
     }
   }
