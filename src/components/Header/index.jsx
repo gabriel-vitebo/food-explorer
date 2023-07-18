@@ -62,7 +62,7 @@ export function Header({ amount, searchingFood }) {
 
       {isAdm ? (
         <ButtonBg
-          className={"buttonAdm"}
+          className={"buttonAdm toDesktop"}
           title={"Novo Prato"}
           onClick={createFood}
         />

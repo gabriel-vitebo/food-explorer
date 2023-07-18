@@ -20,12 +20,15 @@ export const Container = styled.div`
   align-items: center;
   cursor: pointer;
 
-  h2 {
-    font-size: 2.1rem;
-    margin-left: 0.8rem;
-    font-weight: 700;
-    font-family: ${({ theme }) => theme.FONTS.Roboto};
-    color: ${({ theme }) => theme.COLORS.light100};
+  .logo {
+    display: flex;
+    h2 {
+      font-size: 2.1rem;
+      margin-left: 0.8rem;
+      font-weight: 700;
+      font-family: ${({ theme }) => theme.FONTS.Roboto};
+      color: ${({ theme }) => theme.COLORS.light100};
+    }
   }
 
   span {
