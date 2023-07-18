@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
+import { device } from "../../styles/responsive";
 
 const slide = keyframes`
   0% {
@@ -31,4 +32,9 @@ export const Container = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media ${device.desktop} {
+    font-weight: 700;
+    font-size: 2.4rem;
+  }
 `;

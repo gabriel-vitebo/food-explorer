@@ -29,6 +29,11 @@ export function Header({ amount, searchingFood }) {
     navigate("/newfood/:id");
   }
 
+  function handleSignOut() {
+    navigate("/");
+    signOut();
+  }
+
   return (
     <Container>
       {openMenu ? (
@@ -74,7 +79,11 @@ export function Header({ amount, searchingFood }) {
         />
       )}
 
-      <GoSignOut size={26} className={"toDesktop exit"} onClick={signOut} />
+      <GoSignOut
+        size={26}
+        className={"toDesktop exit"}
+        onClick={handleSignOut}
+      />
 
       {openMenu && <Menu isAdm={isAdm} />}
     </Container>

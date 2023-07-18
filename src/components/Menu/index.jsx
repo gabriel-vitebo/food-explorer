@@ -14,6 +14,11 @@ export function Menu({ isAdm }) {
     navigate("/newfood/:id");
   }
 
+  function handleSignOut() {
+    navigate("/");
+    signOut();
+  }
+
   return (
     <Container>
       <Input
@@ -21,7 +26,7 @@ export function Menu({ isAdm }) {
         placeholder={"Busque por pratos ou ingredientes"}
       />
       <ul>
-        <li onClick={signOut}>
+        <li onClick={handleSignOut}>
           <button>Sair</button>
         </li>
         {isAdm && (
