@@ -69,34 +69,42 @@ export function Details() {
             <div className="buttonBack" onClick={backToHome}>
               <Button icon={RxCaretLeft} title={"voltar"} size={32} />
             </div>
-            <img src={foodData.image} alt={`imagem do prato${foodData.name}`} />
-            <h1>{foodData.name}</h1>
-            <p>{foodData.description}</p>
-            <div className="ingredients">
-              {ingredients.map((ingredient) => {
-                return <Ingredients key={ingredient} name={ingredient} />;
-              })}
-            </div>
-            <div className="quantity-and-finalize">
-              {isAdm ? (
-                <ButtonBg
-                  title={"Editar Prato"}
-                  onClick={() => handleEditFood(params.id)}
-                />
-              ) : (
-                <>
-                  <Amount
-                    number={quantitiesToInclude[params.id] || 0}
-                    addMore={() => addOneMore(params.id)}
-                    remove={() => removeOneMore(params.id)}
-                  />
-                  <ButtonBg
-                    icon={TfiReceipt}
-                    title={"pedir"}
-                    price={foodData.price.toFixed(2)}
-                  />
-                </>
-              )}
+            <div className="desktop">
+              <img
+                src={foodData.image}
+                alt={`imagem do prato${foodData.name}`}
+              />
+              <div className="info">
+                <h1>{foodData.name}</h1>
+                <p>{foodData.description}</p>
+                <div className="ingredients">
+                  {ingredients.map((ingredient) => {
+                    return <Ingredients key={ingredient} name={ingredient} />;
+                  })}
+                </div>
+                <div className="quantity-and-finalize">
+                  {isAdm ? (
+                    <ButtonBg
+                      title={"Editar Prato"}
+                      onClick={() => handleEditFood(params.id)}
+                      className={"buttonEdit"}
+                    />
+                  ) : (
+                    <>
+                      <Amount
+                        number={quantitiesToInclude[params.id] || 0}
+                        addMore={() => addOneMore(params.id)}
+                        remove={() => removeOneMore(params.id)}
+                      />
+                      <ButtonBg
+                        icon={TfiReceipt}
+                        title={"pedir"}
+                        price={foodData.price.toFixed(2)}
+                      />
+                    </>
+                  )}
+                </div>
+              </div>
             </div>
           </Content>
         </main>
