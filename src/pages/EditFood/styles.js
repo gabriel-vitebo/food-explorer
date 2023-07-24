@@ -107,6 +107,7 @@ export const Form = styled.form`
     .lineOne {
       display: flex;
       gap: 3.2rem;
+
       > section {
         width: 25%;
         h2 {
