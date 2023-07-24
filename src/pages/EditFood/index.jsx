@@ -131,79 +131,87 @@ export function EditFood() {
             />
             <h1>Editar prato</h1>
           </header>
-          <Section title={"Imagem do prato"}>
-            <InputImage
-              icon={BsUpload}
-              title={"Selecione imagem para alterá-la"}
-              onChange={handleImageChange}
-            />
-          </Section>
-          <Section title={"Nome"}>
-            <Input
-              title={"Nome"}
-              placeholder={"Salada Ceasar"}
-              value={food.name || ""}
-              onChange={(e) => setFood({ ...food, name: e.target.value })}
-            />
-          </Section>
-          <Section title={"Categoria"}>
-            <DropList
-              onChange={(e) => setSelectedCategory(JSON.parse(e.target.value))}
-            >
-              {categories.map((category) => (
-                <option
-                  key={category.id}
-                  value={JSON.stringify(category)}
-                  className="option"
-                >
-                  {category.name}
-                </option>
-              ))}
-            </DropList>
-          </Section>
-          <Section title={"Ingredientes"}>
-            <div className="ingredients-tag">
-              {ingredients.map((ingredient, index) => {
-                return (
-                  <NewIngredient
-                    value={ingredient}
-                    key={String(index)}
-                    onClick={() => {
-                      handleRemoveIngredient(ingredient);
-                    }}
-                  />
-                );
-              })}
-              <NewIngredient
-                isNew
-                placeholder="adicionar"
-                onChange={(e) => setNewIngredient(e.target.value)}
-                value={newIngredient}
-                onClick={handleAddIngredient}
+          <div className="lineOne">
+            <Section title={"Imagem do prato"}>
+              <InputImage
+                icon={BsUpload}
+                title={"Selecione imagem para alterá-la"}
+                onChange={handleImageChange}
               />
-            </div>
-          </Section>
-          <Section title={"preço"}>
-            <Input
-              placeholder={"R$ 40,00"}
-              value={food.price || ""}
-              onChange={(e) => setFood({ ...food, price: e.target.value })}
-              onBlur={(e) =>
-                setFood({ ...food, price: formatPrice(e.target.value) })
-              }
-            />
-          </Section>
-          <Section title={"Descrição"}>
-            <TextArea
-              placeholder={
-                "A Salada César é uma opção refrescante para o verão."
-              }
-              value={food.description || ""}
-              onChange={(e) =>
-                setFood({ ...food, description: e.target.value })
-              }
-            />
-          </Section>
+            </Section>
+            <Section title={"Nome"}>
+              <Input
+                title={"Nome"}
+                placeholder={"Salada Ceasar"}
+                value={food.name || ""}
+                onChange={(e) => setFood({ ...food, name: e.target.value })}
+              />
+            </Section>
+            <Section title={"Categoria"}>
+              <DropList
+                onChange={(e) =>
+                  setSelectedCategory(JSON.parse(e.target.value))
+                }
+              >
+                {categories.map((category) => (
+                  <option
+                    key={category.id}
+                    value={JSON.stringify(category)}
+                    className="option"
+                  >
+                    {category.name}
+                  </option>
+                ))}
+              </DropList>
+            </Section>
+          </div>
+          <div className="lineTwo">
+            <Section title={"Ingredientes"}>
+              <div className="ingredients-tag">
+                {ingredients.map((ingredient, index) => {
+                  return (
+                    <NewIngredient
+                      value={ingredient}
+                      key={String(index)}
+                      onClick={() => {
+                        handleRemoveIngredient(ingredient);
+                      }}
+                    />
+                  );
+                })}
+                <NewIngredient
+                  isNew
+                  placeholder="adicionar"
+                  onChange={(e) => setNewIngredient(e.target.value)}
+                  value={newIngredient}
+                  onClick={handleAddIngredient}
+                />
+              </div>
+            </Section>
+            <Section title={"preço"}>
+              <Input
+                placeholder={"R$ 40,00"}
+                value={food.price || ""}
+                onChange={(e) => setFood({ ...food, price: e.target.value })}
+                onBlur={(e) =>
+                  setFood({ ...food, price: formatPrice(e.target.value) })
+                }
+              />
+            </Section>
+          </div>
+          <div className="lineThree">
+            <Section title={"Descrição"}>
+              <TextArea
+                placeholder={
+                  "A Salada César é uma opção refrescante para o verão."
+                }
+                value={food.description || ""}
+                onChange={(e) =>
+                  setFood({ ...food, description: e.target.value })
+                }
+              />
+            </Section>
+          </div>
           <div className="buttons">
             <ButtonBg title={"Excluir prato"} onClick={handleDelete} />
             <ButtonBg title={"Salvar alteração"} onClick={handleUpdate} />

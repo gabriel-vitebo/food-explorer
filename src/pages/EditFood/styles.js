@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { device } from "../../styles/responsive";
 
 const slide = keyframes`
   0% {
@@ -21,6 +22,14 @@ export const Container = styled.div`
   grid-template-areas:
     "header"
     "content";
+
+  @media ${device.desktop} {
+    main {
+      width: 100vw;
+      max-width: 70%;
+      margin: 0 auto;
+    }
+  }
 `;
 
 export const Form = styled.form`
@@ -54,15 +63,19 @@ export const Form = styled.form`
     }
   }
 
-  > section {
-    h2 {
-      font-family: ${({ theme }) => theme.FONTS.Roboto};
-      font-weight: 400;
-      font-size: 1.6rem;
-      line-height: 1.6rem;
-      color: ${({ theme }) => theme.COLORS.light400};
+  .lineOne,
+  .lineTwo,
+  .lineThree {
+    > section {
+      h2 {
+        font-family: ${({ theme }) => theme.FONTS.Roboto};
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        color: ${({ theme }) => theme.COLORS.light400};
 
-      margin-bottom: 1.6rem;
+        margin-bottom: 1.6rem;
+      }
     }
 
     .ingredients-tag {
@@ -84,6 +97,86 @@ export const Form = styled.form`
 
     button:nth-child(1) {
       background-color: ${({ theme }) => theme.COLORS.dark800};
+    }
+  }
+
+  @media ${device.desktop} {
+    display: flex;
+    max-width: 100vw;
+
+    .lineOne {
+      display: flex;
+      gap: 3.2rem;
+      > section {
+        width: 25%;
+        h2 {
+          font-family: ${({ theme }) => theme.FONTS.Roboto};
+          font-weight: 400;
+          font-size: 1.6rem;
+          line-height: 1.6rem;
+          color: ${({ theme }) => theme.COLORS.light400};
+
+          margin-bottom: 1.6rem;
+        }
+      }
+
+      section:nth-child(2) {
+        width: 50%;
+      }
+    }
+
+    .lineTwo {
+      display: flex;
+      align-items: center;
+      gap: 3.2rem;
+      section {
+        width: 20%;
+        h2 {
+          font-family: ${({ theme }) => theme.FONTS.Roboto};
+          font-weight: 400;
+          font-size: 1.6rem;
+          line-height: 1.6rem;
+          color: ${({ theme }) => theme.COLORS.light400};
+
+          margin-bottom: 1.6rem;
+        }
+      }
+
+      section:nth-child(1) {
+        width: 80%;
+        div {
+          display: flex;
+          gap: 1.6rem;
+          flex-wrap: wrap;
+        }
+      }
+    }
+
+    .lineThree {
+      display: flex;
+      section {
+        width: 100%;
+        max-width: 100%;
+        h2 {
+          font-family: ${({ theme }) => theme.FONTS.Roboto};
+          font-weight: 400;
+          font-size: 1.6rem;
+          line-height: 1.6rem;
+          color: ${({ theme }) => theme.COLORS.light400};
+
+          margin-bottom: 1.6rem;
+        }
+      }
+    }
+
+    > .buttons {
+      justify-content: flex-end;
+      button {
+        width: 18rem;
+      }
+      button:nth-child(1) {
+        width: 13.5rem;
+      }
     }
   }
 `;
