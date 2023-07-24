@@ -34,6 +34,17 @@ export function NewFood() {
 
   const navigate = useNavigate();
 
+  function backOneMore() {
+    if (foodName.length >= 1 || ingredients.length >= 1 || price >= 1) {
+      confirm("Tem certeza que deseja voltar a página?");
+      if (confirm) {
+        navigate(-1);
+      }
+    }
+
+    navigate(-1);
+  }
+
   function setImage(event) {
     const file = event.target.files[0];
     setImageFile(file);
@@ -93,7 +104,12 @@ export function NewFood() {
       <main>
         <Form>
           <header>
-            <Button size={22} icon={RxCaretLeft} title={"voltar"} />
+            <Button
+              size={22}
+              icon={RxCaretLeft}
+              title={"voltar"}
+              backToHome={backOneMore}
+            />
             <h1>Novo prato</h1>
           </header>
           <div className="lineOne">
