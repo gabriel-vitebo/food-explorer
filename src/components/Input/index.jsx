@@ -1,11 +1,12 @@
 import { Container } from "./styles";
 
-export function Input({ icon: Icon, toDesktop, ...rest }) {
+export function Input({ icon: Icon, title, toDesktop, ...rest }) {
   return (
     <Container className={toDesktop}>
+      <label htmlFor="titleInput">{title}</label>
       <div className="input-area">
         {Icon && <Icon size={24} />}
-        <input {...rest} />
+        <input id="titleInput" {...rest} />
       </div>
     </Container>
   );
