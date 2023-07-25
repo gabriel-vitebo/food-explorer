@@ -22,6 +22,18 @@ export const Container = styled.div`
 
   color: ${({ theme }) => theme.COLORS.light400};
 
+  > label {
+    font-family: ${({ theme }) => theme.FONTS.Roboto};
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+    color: ${({ theme }) => theme.COLORS.light500};
+    width: 100%;
+    display: flex;
+    justify-self: flex-start;
+    margin-bottom: 0.8rem;
+  }
+
   > .input-area {
     width: 100%;
     display: flex;
