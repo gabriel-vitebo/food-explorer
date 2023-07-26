@@ -141,7 +141,6 @@ export function EditFood() {
             </Section>
             <Section title={"Nome"}>
               <Input
-                title={"Nome"}
                 placeholder={"Salada Ceasar"}
                 value={food.name || ""}
                 onChange={(e) => setFood({ ...food, name: e.target.value })}

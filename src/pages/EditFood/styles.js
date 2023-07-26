@@ -106,6 +106,7 @@ export const Form = styled.form`
 
     .lineOne {
       display: flex;
+      align-items: center;
       gap: 3.2rem;
 
       > section {
@@ -155,6 +156,8 @@ export const Form = styled.form`
 
     .lineThree {
       display: flex;
+      align-items: center;
+
       section {
         width: 100%;
         max-width: 100%;
