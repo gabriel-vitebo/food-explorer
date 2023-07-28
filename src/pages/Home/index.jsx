@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import { Container } from "./styles";
 import { useAuth } from "../../hooks/auth";
+import imageBrand from "../../assets/brend.png";
 
 import { Header } from "../../components/Header";
 import { Section } from "../../components/Section";
@@ -120,7 +121,7 @@ export function Home() {
         searchingFood={(e) => setSearch(e.target.value)}
       />
       <div className="brand">
-        <img src="/src/assets/brend.png" alt="" />
+        <img src={imageBrand} alt="" />
       </div>
       {fetchedFoods.length > 0 && (
         <Section title="Pratos buscados">
