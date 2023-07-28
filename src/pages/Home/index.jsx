@@ -143,7 +143,7 @@ export function Home() {
         </Section>
       )}
       {categories.map((category) => (
-        <Section title={category.name} key={category.categoryId}>
+        <Section title={category.name} key={category.categoryId} hasCarousel>
           {category.foods.map((food) => (
             <Card
               key={food.foodId}

@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { Container } from "./styles";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 
-export function Section({ children, title }) {
+export function Section({ children, title, hasCarousel = true }) {
   const scrollContainerRef = useRef(null);
 
   function scrollLeft() {
@@ -26,17 +26,21 @@ export function Section({ children, title }) {
   return (
     <Container>
       <h2>{title}</h2>
-      <div className="carrousel">
-        <div className="left" onClick={scrollLeft}>
-          <AiFillCaretLeft size={30} />
+      {hasCarousel ? (
+        <div className="carrousel">
+          <div className="left toDesktop" onClick={scrollLeft}>
+            <AiFillCaretLeft size={30} />
+          </div>
+          <div className="content" ref={scrollContainerRef}>
+            {children}
+          </div>
+          <div className="right toDesktop" onClick={scrollRight}>
+            <AiFillCaretRight size={30} />
+          </div>
         </div>
-        <div className="content" ref={scrollContainerRef}>
-          {children}
-        </div>
-        <div className="right" onClick={scrollRight}>
-          <AiFillCaretRight size={30} />
-        </div>
-      </div>
+      ) : (
+        <div>{children}</div>
+      )}
     </Container>
   );
 }
