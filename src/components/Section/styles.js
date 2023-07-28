@@ -61,18 +61,28 @@ export const Container = styled.section`
     .carrousel {
       display: flex;
       align-items: center;
+      position: relative;
     }
 
-    .left,
-    .rigth {
+    .left .right {
       display: flex;
       justify-content: center;
       align-items: center;
       width: 22.4rem;
       height: 43.1rem;
+      position: absolute;
+      z-index: 1;
     }
 
     .left {
+      width: 22.4rem;
+      height: 43.1rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      position: absolute;
+      z-index: 1;
+
       background: linear-gradient(
         90deg,
         rgba(0, 10, 15, 100%),
@@ -81,6 +91,14 @@ export const Container = styled.section`
     }
 
     .right {
+      width: 22.4rem;
+      height: 43.1rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      position: absolute;
+      right: 0;
+      z-index: 1;
       background: linear-gradient(
         90deg,
         rgba(0, 10, 15, 0.27%),
