@@ -26,7 +26,7 @@ export function Details() {
   const isAdm = user.isAdm;
 
   function backToHome() {
-    navigate("/");
+    navigate(-1);
   }
 
   function handleEditFood(id) {

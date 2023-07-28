@@ -62,16 +62,7 @@ export const Container = styled.section`
       display: flex;
       align-items: center;
       position: relative;
-    }
-
-    .left .right {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 22.4rem;
-      height: 43.1rem;
-      position: absolute;
-      z-index: 1;
+      animation: ${slide} 0.6s 0.3s backwards;
     }
 
     .left {
