@@ -34,12 +34,12 @@ export const Container = styled.section`
     color: ${({ theme }) => theme.COLORS.light300};
   }
 
-  > div {
+  .content {
+    overflow-x: scroll;
     animation: ${dropDown} 0.6s 0.3s backwards;
     display: flex;
     flex-wrap: nowrap;
     gap: 1.6rem;
-    overflow-x: scroll;
   }
 
   .toDesktop {
@@ -58,7 +58,38 @@ export const Container = styled.section`
       font-size: 3.2rem;
     }
 
-    > div {
+    .carrousel {
+      display: flex;
+      align-items: center;
+    }
+
+    .left,
+    .rigth {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 22.4rem;
+      height: 43.1rem;
+    }
+
+    .left {
+      background: linear-gradient(
+        90deg,
+        rgba(0, 10, 15, 100%),
+        rgba(0, 10, 15, 0.27%)
+      );
+    }
+
+    .right {
+      background: linear-gradient(
+        90deg,
+        rgba(0, 10, 15, 0.27%),
+        rgba(0, 10, 15, 100%)
+      );
+    }
+
+    .content {
+      overflow: hidden;
       max-width: 100%;
       position: relative;
 
