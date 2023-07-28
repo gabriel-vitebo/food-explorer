@@ -122,7 +122,6 @@ export function NewFood() {
             </Section>
             <Section title={"Nome"} hasCarousel={false}>
               <Input
-                title={"Nome"}
                 placeholder={"Ex.: Salada Ceasar"}
                 onChange={(e) => setFoodName(e.target.value)}
               />
