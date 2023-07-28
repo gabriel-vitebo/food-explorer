@@ -4,6 +4,7 @@ import { api } from "../../services/api";
 import { Container } from "./styles";
 import { useAuth } from "../../hooks/auth";
 import imageBrand from "../../assets/brend.png";
+// comentario
 
 import { Header } from "../../components/Header";
 import { Section } from "../../components/Section";
