@@ -113,21 +113,21 @@ export function NewFood() {
             <h1>Novo prato</h1>
           </header>
           <div className="lineOne">
-            <Section title={"Imagem do prato"}>
+            <Section title={"Imagem do prato"} hasCarousel={false}>
               <InputImage
                 icon={BsUpload}
                 title={"Selecione imagem"}
                 onChange={setImage}
               />
             </Section>
-            <Section title={"Nome"}>
+            <Section title={"Nome"} hasCarousel={false}>
               <Input
                 title={"Nome"}
                 placeholder={"Ex.: Salada Ceasar"}
                 onChange={(e) => setFoodName(e.target.value)}
               />
             </Section>
-            <Section title={"Categoria"}>
+            <Section title={"Categoria"} hasCarousel={false}>
               <DropList
                 onChange={(e) =>
                   setSelectedCategory(JSON.parse(e.target.value))
@@ -146,7 +146,7 @@ export function NewFood() {
             </Section>
           </div>
           <div className="lineTwo">
-            <Section title={"Ingredientes"}>
+            <Section title={"Ingredientes"} hasCarousel={false}>
               <div className="ingredients-tag">
                 {ingredients.map((ingredient, index) => (
                   <NewIngredient
@@ -166,7 +166,7 @@ export function NewFood() {
                 />
               </div>
             </Section>
-            <Section title={"preço"}>
+            <Section title={"preço"} hasCarousel={false}>
               <Input
                 placeholder={"R$ 00,00"}
                 onChange={(e) => setPrice(e.target.value)}
@@ -174,7 +174,7 @@ export function NewFood() {
             </Section>
           </div>
           <div className="lineThree">
-            <Section title={"Descrição"}>
+            <Section title={"Descrição"} hasCarousel={false}>
               <TextArea
                 placeholder={
                   "Fale brevemente sobre o prato, seus ingredientes e composição"
