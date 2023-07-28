@@ -34,6 +34,7 @@ export const Container = styled.div`
     cursor: pointer;
     color: ${({ theme, favorite }) =>
       favorite ? theme.COLORS.tomato100 : theme.COLORS.light300};
+    z-index: 1;
   }
 
   > img {
@@ -110,6 +111,7 @@ export const Container = styled.div`
         font-weight: 700;
         font-size: 2.4rem;
         cursor: pointer;
+        z-index: 1;
       }
 
       h3:hover {
