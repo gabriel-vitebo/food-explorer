@@ -34,9 +34,25 @@ export const Container = styled.div`
     }
   }
 
+  .toMobile {
+    display: flex;
+  }
+
+  .toDesktop {
+    display: none;
+  }
+
   @media ${device.desktop} {
     > .brand {
+      width: 60%;
+    }
+
+    .toMobile{
       display: none;
+    }
+
+    .toDesktop {
+      display: flex;
     }
 
     margin: 0 auto;

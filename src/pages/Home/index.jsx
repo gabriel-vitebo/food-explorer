@@ -4,7 +4,8 @@ import { api } from "../../services/api";
 import { Container } from "./styles";
 import { useAuth } from "../../hooks/auth";
 import imageBrand from "../../assets/brend.png";
-// comentario
+import imageBrandDesk from "../../assets/renomeDeskt.png";
+
 
 import { Header } from "../../components/Header";
 import { Section } from "../../components/Section";
@@ -121,8 +122,11 @@ export function Home() {
         value={search}
         searchingFood={(e) => setSearch(e.target.value)}
       />
-      <div className="brand">
+      <div className="brand toMobile">
         <img src={imageBrand} alt="" />
+      </div>
+      <div className="brand toDesktop">
+        <img src={imageBrandDesk} alt="" />
       </div>
       {fetchedFoods.length > 0 && (
         <Section title="Pratos buscados">

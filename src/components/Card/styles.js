@@ -34,7 +34,6 @@ export const Container = styled.div`
     cursor: pointer;
     color: ${({ theme, favorite }) =>
       favorite ? theme.COLORS.tomato100 : theme.COLORS.light300};
-    z-index: 1;
   }
 
   > img {
@@ -92,6 +91,10 @@ export const Container = styled.div`
   @media ${device.desktop} {
     .toDesktop {
       display: flex;
+    }
+
+    >svg {
+      z-index: 1;
     }
 
     width: 25.6rem;
