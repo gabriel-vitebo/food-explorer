@@ -100,10 +100,11 @@ export const Content = styled.div`
     text-align: center;
 
     .desktop {
-      display: flex;
-      gap: 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       img {
         width: 39rem;
+        max-width: 500px;
         height: 39rem;
         margin: 0 auto;
         object-fit: cover;
