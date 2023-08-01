@@ -67,6 +67,7 @@ export const Form = styled.form`
   .lineTwo,
   .lineThree {
     > section {
+      margin-bottom: 2.4rem;
       h2 {
         font-family: ${({ theme }) => theme.FONTS.Roboto};
         font-weight: 400;

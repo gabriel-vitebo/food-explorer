@@ -45,6 +45,7 @@ export const Form = styled.form`
   .lineTwo,
   .lineThree {
     > section {
+      margin-bottom: 2.4rem;
       h2 {
         font-family: ${({ theme }) => theme.FONTS.Roboto};
         font-weight: 400;
@@ -79,28 +80,16 @@ export const Form = styled.form`
     }
   }
 
-  > section {
-    h2 {
-      font-family: ${({ theme }) => theme.FONTS.Roboto};
-      font-weight: 400;
-      font-size: 1.6rem;
-      line-height: 1.6rem;
-      color: ${({ theme }) => theme.COLORS.light400};
+  .ingredients-tag {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1.6rem;
 
-      margin-bottom: 1.6rem;
-    }
-
-    .ingredients-tag {
-      display: flex;
-      flex-wrap: wrap;
-      width: 100%;
-      gap: 1.6rem;
-
-      background-color: ${({ theme }) => theme.COLORS.dark800};
-      border-radius: 0.8rem;
-      height: 100%;
-      padding: 0.4rem 0.8rem;
-    }
+    background-color: ${({ theme }) => theme.COLORS.dark800};
+    border-radius: 0.8rem;
+    height: 100%;
+    padding: 0.4rem 0.8rem;
   }
 
   @media ${device.desktop} {
