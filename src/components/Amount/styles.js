@@ -22,5 +22,9 @@ export const Container = styled.div`
     .addOrRemove:active {
       transform: scale(1.3);
     }
+
+    > svg {
+      z-index: 1;
+    }
   }
 `;
